@@ -369,6 +369,7 @@
 </head>
 <body>
 
+
 <nav class="sidebar">
   <div class="sidebar-header">
     <h2>📘 软件开发工具实践</h2>
@@ -462,24 +463,20 @@
 <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="返回顶部">↑</button>
 
 <!-- ==================== 主内容区 ==================== -->
-<div class="main-content">
 
+<div class="main-content">
 <h1>《软件开发工具实践》实验报告</h1>
 
 <h2 id="课程概述">📋 课程概述</h2>
 
-《软件开发工具实践》是一门面向计算机类专业的**实践环节课程**。通过学习课程7个循序渐进的实验，从**Web开发环境搭建**出发，逐步掌握**代码编辑器使用**、**静态站点构建与部署**、**Linux系统管理**、**远程登录**以及**自动化部署（CI/CD）**等现代软件开发的核心工具链。
-
-七个实验形成了完整的"**开发 → 构建 → 部署**"工具链闭环：
-
-```
-实验一（Web环境） →  实验二（编辑器） → 实验三（站点构建）
+<p>《软件开发工具实践》是一门面向计算机类专业的<strong>实践环节课程</strong>。通过学习课程7个循序渐进的实验，从<strong>Web开发环境搭建</strong>出发，逐步掌握<strong>代码编辑器使用</strong>、<strong>静态站点构建与部署</strong>、<strong>Linux系统管理</strong>、<strong>远程登录</strong>以及<strong>自动化部署（CI/CD）</strong>等现代软件开发的核心工具链。</p>
+<p>七个实验形成了完整的"<strong>开发 → 构建 → 部署</strong>"工具链闭环：</p>
+<pre><code>实验一（Web环境） →  实验二（编辑器） → 实验三（站点构建）
                                        ↓
                                      实验四（虚拟机）
                                        ↓
 实验七（软件部署）← 实验六（远程管理）← 实验五（Linux配置）
-```
-
+</code></pre>
 <!-- ================================================================== -->
 <!--                            实验一                                    -->
 <!-- ================================================================== -->
@@ -488,72 +485,100 @@
 
 <h3 id="exp1-purpose">1.1 实验目的</h3>
 
-本次实验旨在搭建一个完整的 **Web 软件开发环境**，包括安装 **Node.js 运行时**、**npm 包管理器**、**Git 版本控制工具**以及 **Hexo 静态博客框架 CLI**。通过动手实践，理解 B/S 架构下 Web 开发环境的核心组件构成，掌握从环境安装到项目初始化、本地预览的完整流程。
-
+<p>本次实验旨在搭建一个完整的 <strong>Web 软件开发环境</strong>，包括安装 <strong>Node.js 运行时</strong>、<strong>npm 包管理器</strong>、<strong>Git 版本控制工具</strong>以及 <strong>Hexo 静态博客框架 CLI</strong>。通过动手实践，理解 B/S 架构下 Web 开发环境的核心组件构成，掌握从环境安装到项目初始化、本地预览的完整流程。</p>
 <h3 id="exp1-env">1.2 实验环境</h3>
 
-| 项目 | 配置信息 |
-|:-----|:---------|
-| 操作系统 | Windows 11 专业版 22H2 |
-| 运行时 | Node.js v20.x LTS |
-| 包管理器 | npm 10.x |
-| 版本控制 | Git for Windows 2.x |
-| 博客框架 | Hexo CLI 4.x |
-| 编辑器 | VS Code |
-
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">项目</th>
+<th style="text-align: left;">配置信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">操作系统</td>
+<td style="text-align: left;">Windows 11 专业版 22H2</td>
+</tr>
+<tr>
+<td style="text-align: left;">运行时</td>
+<td style="text-align: left;">Node.js v20.x LTS</td>
+</tr>
+<tr>
+<td style="text-align: left;">包管理器</td>
+<td style="text-align: left;">npm 10.x</td>
+</tr>
+<tr>
+<td style="text-align: left;">版本控制</td>
+<td style="text-align: left;">Git for Windows 2.x</td>
+</tr>
+<tr>
+<td style="text-align: left;">博客框架</td>
+<td style="text-align: left;">Hexo CLI 4.x</td>
+</tr>
+<tr>
+<td style="text-align: left;">编辑器</td>
+<td style="text-align: left;">VS Code</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp1-process">1.3 实验过程</h3>
 
 <h4>步骤一：安装 Node.js 与 npm</h4>
 
-访问 Node.js 官网 **https://nodejs.org/**，下载 **LTS 版本** 的 Windows 安装包。安装时务必勾选 **"Automatically install the necessary tools"** 并确保 **"Add to PATH"** 被选中。
-
-安装完成后，打开命令提示符验证：
-
-```bash
-node -v    # 输出 v22.20.0
+<p>访问 Node.js 官网 <strong>https://nodejs.org/</strong>，下载 <strong>LTS 版本</strong> 的 Windows 安装包。安装时务必勾选 <strong>"Automatically install the necessary tools"</strong> 并确保 <strong>"Add to PATH"</strong> 被选中。</p>
+<p>安装完成后，打开命令提示符验证：</p>
+<pre><code class="language-bash">node -v    # 输出 v22.20.0
 npm -v     # 输出 10.x.x
-```
-
-<img src="图2-1.png" alt="图2-1：命令提示符中 node -v 和 npm -v 的输出结果">
+</code></pre>
+<p><img src="图2-1.png" alt="图2-1：命令提示符中 node -v 和 npm -v 的输出结果"></p>
 <div class="img-caption">图2-1：验证 Node.js 和 npm 安装成功</div>
 
 <h4>步骤二：配置 npm 镜像源（推荐）</h4>
 
-为提高国内下载速度，将 npm 默认镜像源切换为 npmmirror：
-
-```bash
-npm config set registry https://registry.npmmirror.com
+<p>为提高国内下载速度，将 npm 默认镜像源切换为 npmmirror：</p>
+<pre><code class="language-bash">npm config set registry https://registry.npmmirror.com
 npm config get registry    # 验证配置是否生效
-```
-
-<img src="图2-2.png" alt="图2-2：npm 镜像源配置验证">
+</code></pre>
+<p><img src="图2-2.png" alt="图2-2：npm 镜像源配置验证"></p>
 <div class="img-caption">图2-2：确认 npm 镜像源已切换</div>
 
 <h4>步骤三：安装 Git for Windows</h4>
 
-访问 Git 官网 **https://git-scm.com/download/win** 下载安装包。安装过程中的关键选项：
-
-| 安装页面 | 推荐选择 |
-|:---------|:---------|
-| Select Components | ✅ Git Bash Here + ✅ Git GUI Here |
-| Default Editor | VS Code（如已安装） |
-| PATH Environment | Git from the command line and also from 3rd-party software |
-
-安装后配置全局用户信息：
-
-```bash
-git config --global user.name "你的姓名"
-git config --global user.email "你的邮箱@example.com"
+<p>访问 Git 官网 <strong>https://git-scm.com/download/win</strong> 下载安装包。安装过程中的关键选项：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">安装页面</th>
+<th style="text-align: left;">推荐选择</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Select Components</td>
+<td style="text-align: left;">✅ Git Bash Here + ✅ Git GUI Here</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Editor</td>
+<td style="text-align: left;">VS Code（如已安装）</td>
+</tr>
+<tr>
+<td style="text-align: left;">PATH Environment</td>
+<td style="text-align: left;">Git from the command line and also from 3rd-party software</td>
+</tr>
+</tbody>
+</table>
+<p>安装后配置全局用户信息：</p>
+<pre><code class="language-bash">git config --global user.name &quot;你的姓名&quot;
+git config --global user.email &quot;你的邮箱@example.com&quot;
 git --version    # 验证安装
-```
-
-<img src="图2-3.png" alt="图2-3：Git 安装组件选择界面">
+</code></pre>
+<p><img src="图2-3.png" alt="图2-3：Git 安装组件选择界面"></p>
 <div class="img-caption">图2-3：Git 安装——选择组件</div>
 
 <h4>步骤四：安装 Hexo CLI 并初始化博客</h4>
 
-```bash
-npm install -g hexo-cli    # 全局安装 Hexo 命令行工具
+<pre><code class="language-bash">npm install -g hexo-cli    # 全局安装 Hexo 命令行工具
 hexo -v                    # 验证安装
 
 # 初始化博客项目
@@ -561,37 +586,63 @@ cd D:\Blog
 hexo init my-blog
 cd my-blog
 npm install                # 安装项目依赖
-```
-
-<img src="图2-4.png" alt="图2-4：hexo init 成功后的目录结构">
+</code></pre>
+<p><img src="图2-4.png" alt="图2-4：hexo init 成功后的目录结构"></p>
 <div class="img-caption">图2-4：Hexo 项目初始化完成后的目录结构</div>
 
 <h4>步骤五：本地预览</h4>
 
-```bash
-hexo server    # 或简写为 hexo s
-```
-
-浏览器访问 **http://localhost:4000**，看到默认 Hexo 首页即表示成功。
-
-<img src="图2-5.png" alt="图2-5：浏览器中 Hexo 默认首页">
+<pre><code class="language-bash">hexo server    # 或简写为 hexo s
+</code></pre>
+<p>浏览器访问 <strong>http://localhost:4000</strong>，看到默认 Hexo 首页即表示成功。</p>
+<p><img src="图2-5.png" alt="图2-5：浏览器中 Hexo 默认首页"></p>
 <div class="img-caption">图2-5：Hexo 博客本地预览效果</div>
 
 <h3 id="exp1-result">1.4 实验结果</h3>
 
-| 测试项 | 验证命令 | 结果 |
-|:-------|:---------|:-----|
-| Node.js 安装 | `node -v` | ✅ 成功 |
-| npm 安装 | `npm -v` | ✅ 成功 |
-| Git 安装 | `git --version` | ✅ 成功 |
-| Hexo CLI 安装 | `hexo -v` | ✅ 成功 |
-| 博客初始化 | `hexo init my-blog` | ✅ 成功 |
-| 本地预览 | http://localhost:4000 | ✅ 成功 |
-
-**Web开发环境核心组件关系图：**
-
-```
-┌──────────────┐
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">测试项</th>
+<th style="text-align: left;">验证命令</th>
+<th style="text-align: left;">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Node.js 安装</td>
+<td style="text-align: left;"><code>node -v</code></td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">npm 安装</td>
+<td style="text-align: left;"><code>npm -v</code></td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">Git 安装</td>
+<td style="text-align: left;"><code>git --version</code></td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">Hexo CLI 安装</td>
+<td style="text-align: left;"><code>hexo -v</code></td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">博客初始化</td>
+<td style="text-align: left;"><code>hexo init my-blog</code></td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">本地预览</td>
+<td style="text-align: left;">http://localhost:4000</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Web开发环境核心组件关系图：</strong></p>
+<pre><code>┌──────────────┐
 │   Node.js    │ ← 运行时环境（执行JS代码）
 ├──────────────┤
 │     npm      │ ← 包管理器（管理依赖）
@@ -602,63 +653,135 @@ hexo server    # 或简写为 hexo s
 ├──────────────┤
 │ Hexo Server  │ ← 本地预览服务器
 └──────────────┘
-```
-
+</code></pre>
 <h3 id="exp1-knowledge">1.5 知识总结</h3>
 
-**1. 静态博客 vs 动态博客：**
-
-| 对比维度 | 静态博客（Hexo） | 动态博客（WordPress） |
-|:---------|:-----------------|:----------------------|
-| 页面生成时机 | 构建时预先生成所有页面 | 用户访问时由服务器实时生成 |
-| 数据库 | 不需要 | 通常需要 MySQL |
-| 访问速度 | 极快（纯静态文件） | 较慢（需执行后端代码+查数据库） |
-| 安全性 | 高（无后端攻击面） | 需额外防护（SQL注入、XSS等） |
-| 部署方式 | 上传静态文件即可 | 需配置服务器环境和数据库 |
-
-**2. 核心命令速查：**
-
-| 命令 | 作用 |
-|:-----|:-----|
-| `node -v` | 查看 Node.js 版本 |
-| `npm install -g <package>` | 全局安装包 |
-| `npm install` | 安装项目依赖 |
-| `npm config set registry <url>` | 设置 npm 镜像源 |
-| `git config --global user.name` | 设置 Git 用户名 |
-| `hexo init <folder>` | 初始化 Hexo 项目 |
-| `hexo server` | 启动本地预览服务 |
-
+<p><strong>1. 静态博客 vs 动态博客：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">对比维度</th>
+<th style="text-align: left;">静态博客（Hexo）</th>
+<th style="text-align: left;">动态博客（WordPress）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">页面生成时机</td>
+<td style="text-align: left;">构建时预先生成所有页面</td>
+<td style="text-align: left;">用户访问时由服务器实时生成</td>
+</tr>
+<tr>
+<td style="text-align: left;">数据库</td>
+<td style="text-align: left;">不需要</td>
+<td style="text-align: left;">通常需要 MySQL</td>
+</tr>
+<tr>
+<td style="text-align: left;">访问速度</td>
+<td style="text-align: left;">极快（纯静态文件）</td>
+<td style="text-align: left;">较慢（需执行后端代码+查数据库）</td>
+</tr>
+<tr>
+<td style="text-align: left;">安全性</td>
+<td style="text-align: left;">高（无后端攻击面）</td>
+<td style="text-align: left;">需额外防护（SQL注入、XSS等）</td>
+</tr>
+<tr>
+<td style="text-align: left;">部署方式</td>
+<td style="text-align: left;">上传静态文件即可</td>
+<td style="text-align: left;">需配置服务器环境和数据库</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. 核心命令速查：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">命令</th>
+<th style="text-align: left;">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>node -v</code></td>
+<td style="text-align: left;">查看 Node.js 版本</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>npm install -g &lt;package&gt;</code></td>
+<td style="text-align: left;">全局安装包</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>npm install</code></td>
+<td style="text-align: left;">安装项目依赖</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>npm config set registry &lt;url&gt;</code></td>
+<td style="text-align: left;">设置 npm 镜像源</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>git config --global user.name</code></td>
+<td style="text-align: left;">设置 Git 用户名</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hexo init &lt;folder&gt;</code></td>
+<td style="text-align: left;">初始化 Hexo 项目</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hexo server</code></td>
+<td style="text-align: left;">启动本地预览服务</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp1-problems">1.6 出现问题</h3>
 
-> 记录实验中实际遇到的问题和解决方法
-> - npm install 是否遇到网络超时？镜像源切换后改善了吗？
-> - 安装 Git 时 PATH 配置是否正确？
-> - hexo server 启动后端口是否被占用？
-
-常见问题参考：
-
-| 问题现象 | 可能原因 | 解决方法 |
-|:---------|:---------|:---------|
-| `'node' 不是内部或外部命令` | Node.js 未添加到 PATH | 重新安装并确保勾选 "Add to PATH" |
-| `npm install` 速度极慢 | 默认使用国外镜像源 | 切换为 npmmirror 镜像源 |
-| `hexo -v` 报错 | Hexo CLI 未全局安装 | 执行 `npm install -g hexo-cli` |
-| 端口 4000 被占用 | 其他程序占用了该端口 | 使用 `hexo server -p 4001` 换端口 |
-
+<blockquote>
+<p>记录实验中实际遇到的问题和解决方法
+- npm install 是否遇到网络超时？镜像源切换后改善了吗？
+- 安装 Git 时 PATH 配置是否正确？
+- hexo server 启动后端口是否被占用？</p>
+</blockquote>
+<p>常见问题参考：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">问题现象</th>
+<th style="text-align: left;">可能原因</th>
+<th style="text-align: left;">解决方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>'node' 不是内部或外部命令</code></td>
+<td style="text-align: left;">Node.js 未添加到 PATH</td>
+<td style="text-align: left;">重新安装并确保勾选 "Add to PATH"</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>npm install</code> 速度极慢</td>
+<td style="text-align: left;">默认使用国外镜像源</td>
+<td style="text-align: left;">切换为 npmmirror 镜像源</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hexo -v</code> 报错</td>
+<td style="text-align: left;">Hexo CLI 未全局安装</td>
+<td style="text-align: left;">执行 <code>npm install -g hexo-cli</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">端口 4000 被占用</td>
+<td style="text-align: left;">其他程序占用了该端口</td>
+<td style="text-align: left;">使用 <code>hexo server -p 4001</code> 换端口</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp1-reflection">1.7 心得体会</h3>
 
-> 本次Web软件开发环境实验，是我第一次完整经历从零搭建开发环境到本地预览的全过程。打开命令行，输入node -v看到版本号跳出的那一刻，一种踏实的成就感油然而生——原来一个可用的开发环境是由这样一个个基础组件支撑起来的。
-
->实验中印象最深的是配置npm镜像源。一开始执行npm install时进度条几乎不动，切换为npmmirror镜像后速度明显提升。这个小小的操作让我体会到：技术学习不仅需要掌握工具本身，更要懂得如何优化工具的使用环境。课程思政常说要“知行合一”，我想，遇到问题、分析原因、动手解决，本身就是知行合一的过程——书本上写“配置镜像源可提高下载速度”只是一句话，真正在命令行里敲下去、亲眼看到速度变化，才算真正理解。
-
->安装Git时配置全局用户信息，git config --global user.name和user.email这两条命令看似简单，却让我意识到：代码从来不是匿名产物，每一行代码背后都对应着一个真实的开发者，都承载着责任。 正如一些课程思政教学案例所强调的，软件开发不仅要掌握技术，更要遵守职业规范、树立责任意识。未来我写的每一行代码，都代表着我的专业素养和职业态度。
-
->通过这次实验，我理解了Web开发环境的核心组件关系——Node.js是运行时，npm是包管理器，Git是版本控制，Hexo是构建工具。每个工具各司其职又协同配合，这种模块化、分层协作的设计思想，也启发我在今后的学习和工作中要学会分工合作、各尽其责。
-
->从命令行中敲下第一行指令，到浏览器里看到Hexo默认首页呈现，这个过程让我真切感受到：技术从来不是冰冷的代码堆砌，而是解决实际问题的工具，是服务他人、服务社会的载体。作为计算机专业的学生，扎实掌握每一项基础技能，既是对自己负责，也是为将来用技术回馈社会打好根基。
-
-
----
-
+<blockquote>
+<p>本次Web软件开发环境实验，是我第一次完整经历从零搭建开发环境到本地预览的全过程。打开命令行，输入node -v看到版本号跳出的那一刻，一种踏实的成就感油然而生——原来一个可用的开发环境是由这样一个个基础组件支撑起来的。</p>
+<p>实验中印象最深的是配置npm镜像源。一开始执行npm install时进度条几乎不动，切换为npmmirror镜像后速度明显提升。这个小小的操作让我体会到：技术学习不仅需要掌握工具本身，更要懂得如何优化工具的使用环境。课程思政常说要“知行合一”，我想，遇到问题、分析原因、动手解决，本身就是知行合一的过程——书本上写“配置镜像源可提高下载速度”只是一句话，真正在命令行里敲下去、亲眼看到速度变化，才算真正理解。</p>
+<p>安装Git时配置全局用户信息，git config --global user.name和user.email这两条命令看似简单，却让我意识到：代码从来不是匿名产物，每一行代码背后都对应着一个真实的开发者，都承载着责任。 正如一些课程思政教学案例所强调的，软件开发不仅要掌握技术，更要遵守职业规范、树立责任意识。未来我写的每一行代码，都代表着我的专业素养和职业态度。</p>
+<p>通过这次实验，我理解了Web开发环境的核心组件关系——Node.js是运行时，npm是包管理器，Git是版本控制，Hexo是构建工具。每个工具各司其职又协同配合，这种模块化、分层协作的设计思想，也启发我在今后的学习和工作中要学会分工合作、各尽其责。</p>
+<p>从命令行中敲下第一行指令，到浏览器里看到Hexo默认首页呈现，这个过程让我真切感受到：技术从来不是冰冷的代码堆砌，而是解决实际问题的工具，是服务他人、服务社会的载体。作为计算机专业的学生，扎实掌握每一项基础技能，既是对自己负责，也是为将来用技术回馈社会打好根基。</p>
+</blockquote>
+<hr />
 <!-- ================================================================== -->
 <!--                            实验二                                    -->
 <!-- ================================================================== -->
@@ -667,141 +790,337 @@ hexo server    # 或简写为 hexo s
 
 <h3 id="exp2-purpose">2.1 实验目的</h3>
 
-本次实验旨在安装并配置 **Visual Studio Code（VS Code）** 代码编辑器，通过安装 Markdown 相关插件（Markdown All in One、Markdown Preview Enhanced 等），理解代码编辑器**插件（Extension）机制**的核心概念。同时学习 **Markdown 基础语法**，掌握使用 VS Code 完成 Markdown 文档编辑、预览和导出的技能。
-
+<p>本次实验旨在安装并配置 <strong>Visual Studio Code（VS Code）</strong> 代码编辑器，通过安装 Markdown 相关插件（Markdown All in One、Markdown Preview Enhanced 等），理解代码编辑器<strong>插件（Extension）机制</strong>的核心概念。同时学习 <strong>Markdown 基础语法</strong>，掌握使用 VS Code 完成 Markdown 文档编辑、预览和导出的技能。</p>
 <h3 id="exp2-env">2.2 实验环境</h3>
 
-| 项目 | 配置信息 |
-|:-----|:---------|
-| 操作系统 | Windows 11 专业版 22H2 |
-| 编辑器 | Visual Studio Code（最新稳定版） |
-| 核心插件 | Markdown All in One、Markdown Preview Enhanced、Paste Image、markdownlint |
-
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">项目</th>
+<th style="text-align: left;">配置信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">操作系统</td>
+<td style="text-align: left;">Windows 11 专业版 22H2</td>
+</tr>
+<tr>
+<td style="text-align: left;">编辑器</td>
+<td style="text-align: left;">Visual Studio Code（最新稳定版）</td>
+</tr>
+<tr>
+<td style="text-align: left;">核心插件</td>
+<td style="text-align: left;">Markdown All in One、Markdown Preview Enhanced、Paste Image、markdownlint</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp2-process">2.3 实验过程（图文并茂）</h3>
 
 <h4>步骤一：安装 VS Code</h4>
 
-访问 VS Code 官网 **https://code.visualstudio.com/**，下载 Windows 版安装包。安装时的关键勾选：
-
-- ✅ 创建桌面快捷方式
-- ✅ 将"通过 Code 打开"添加到文件/目录右键菜单
-- ✅ **添加到 PATH（必须勾选）**
-
-<img src="图3-1.png" alt="图3-1：VS Code 安装——选择附加任务">
+<p>访问 VS Code 官网 <strong>https://code.visualstudio.com/</strong>，下载 Windows 版安装包。安装时的关键勾选：</p>
+<ul>
+<li>✅ 创建桌面快捷方式</li>
+<li>✅ 将"通过 Code 打开"添加到文件/目录右键菜单</li>
+<li>✅ <strong>添加到 PATH（必须勾选）</strong></li>
+</ul>
+<p><img src="图3-1.png" alt="图3-1：VS Code 安装——选择附加任务"></p>
 <div class="img-caption">图3-1：VS Code 安装时的附加任务勾选</div>
 
 <h4>步骤二：熟悉主界面布局</h4>
 
-启动 VS Code 后，识别五个核心区域：
-
-| 区域 | 位置 | 功能 |
-|:-----|:-----|:-----|
-| **活动栏** | 最左侧窄条 | 资源管理器、搜索、源代码管理、扩展入口 |
-| **侧边栏** | 活动栏右侧 | 当前活动栏工具的具体内容 |
-| **编辑器区域** | 中央 | 主要文件编辑区 |
-| **面板** | 底部 | 终端、输出、问题等 |
-| **状态栏** | 最底部 | 文件信息、Git分支、编码格式 |
-
-<img src="图3-2.png" alt="图3-2：VS Code 主界面五大区域标注">
+<p>启动 VS Code 后，识别五个核心区域：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">区域</th>
+<th style="text-align: left;">位置</th>
+<th style="text-align: left;">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>活动栏</strong></td>
+<td style="text-align: left;">最左侧窄条</td>
+<td style="text-align: left;">资源管理器、搜索、源代码管理、扩展入口</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>侧边栏</strong></td>
+<td style="text-align: left;">活动栏右侧</td>
+<td style="text-align: left;">当前活动栏工具的具体内容</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>编辑器区域</strong></td>
+<td style="text-align: left;">中央</td>
+<td style="text-align: left;">主要文件编辑区</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>面板</strong></td>
+<td style="text-align: left;">底部</td>
+<td style="text-align: left;">终端、输出、问题等</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>状态栏</strong></td>
+<td style="text-align: left;">最底部</td>
+<td style="text-align: left;">文件信息、Git分支、编码格式</td>
+</tr>
+</tbody>
+</table>
+<p><img src="图3-2.png" alt="图3-2：VS Code 主界面五大区域标注"></p>
 <div class="img-caption">图3-2：VS Code 主界面布局</div>
 
 <h4>步骤三：安装 Markdown 插件</h4>
 
-按 `Ctrl + Shift + X` 打开扩展面板，搜索并安装：
-
-| 插件 | 核心功能 |
-|:-----|:---------|
-| **Markdown All in One** | 目录生成（`[TOC]`）、快捷键、列表自动延续、自动完成 |
-| **Markdown Preview Enhanced** | 数学公式（LaTeX）、流程图（Mermaid）、导出为 PDF/HTML |
-| **Paste Image** | `Ctrl+Alt+V` 直接粘贴剪贴板图片到文档 |
-| **markdownlint** | 检查 Markdown 语法错误和格式规范（可选） |
-
-<img src="图3-3.png" alt="图3-3：扩展面板中搜索和安装插件">
+<p>按 <code>Ctrl + Shift + X</code> 打开扩展面板，搜索并安装：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">插件</th>
+<th style="text-align: left;">核心功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Markdown All in One</strong></td>
+<td style="text-align: left;">目录生成（<code>[TOC]</code>）、快捷键、列表自动延续、自动完成</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Markdown Preview Enhanced</strong></td>
+<td style="text-align: left;">数学公式（LaTeX）、流程图（Mermaid）、导出为 PDF/HTML</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Paste Image</strong></td>
+<td style="text-align: left;"><code>Ctrl+Alt+V</code> 直接粘贴剪贴板图片到文档</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>markdownlint</strong></td>
+<td style="text-align: left;">检查 Markdown 语法错误和格式规范（可选）</td>
+</tr>
+</tbody>
+</table>
+<p><img src="图3-3.png" alt="图3-3：扩展面板中搜索和安装插件"></p>
 <div class="img-caption">图3-3：VS Code 扩展面板——安装 Markdown All in One</div>
 
 <h4>步骤四：编辑器优化配置</h4>
 
-按 `Ctrl + ,` 打开设置，做以下调整：
-
-| 设置项 | 推荐值 | 作用 |
-|:-------|:-------|:-----|
-| `files.autoSave` | `afterDelay` | 自动保存，防止内容丢失 |
-| `editor.wordWrap` | `on` | 自动换行，长文本阅读更舒适 |
-| `Paste Image: Path Type` | `relative` | 图片路径使用相对路径 |
-
+<p>按 <code>Ctrl + ,</code> 打开设置，做以下调整：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">设置项</th>
+<th style="text-align: left;">推荐值</th>
+<th style="text-align: left;">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>files.autoSave</code></td>
+<td style="text-align: left;"><code>afterDelay</code></td>
+<td style="text-align: left;">自动保存，防止内容丢失</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>editor.wordWrap</code></td>
+<td style="text-align: left;"><code>on</code></td>
+<td style="text-align: left;">自动换行，长文本阅读更舒适</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Paste Image: Path Type</code></td>
+<td style="text-align: left;"><code>relative</code></td>
+<td style="text-align: left;">图片路径使用相对路径</td>
+</tr>
+</tbody>
+</table>
 <h4>步骤五：编写并预览第一个 Markdown 文档</h4>
 
-使用 `Ctrl + N` 新建文件，保存为 `test.md`，输入包含标题、列表、代码块等元素的 Markdown 内容。按 `Ctrl + K V` 打开并排预览窗口，实时查看渲染效果。
-
-<img src="图3-4.png" alt="图3-4：VS Code 并排编辑+预览 Markdown 文档">
+<p>使用 <code>Ctrl + N</code> 新建文件，保存为 <code>test.md</code>，输入包含标题、列表、代码块等元素的 Markdown 内容。按 <code>Ctrl + K V</code> 打开并排预览窗口，实时查看渲染效果。</p>
+<p><img src="图3-4.png" alt="图3-4：VS Code 并排编辑+预览 Markdown 文档"></p>
 <div class="img-caption">图3-4：左侧编辑 Markdown 源码，右侧实时预览渲染效果</div>
 
 <h3 id="exp2-result">2.4 实验结果</h3>
 
-| 测试项 | 验证方式 | 结果 |
-|:-------|:---------|:-----|
-| VS Code 安装 | 启动、创建新文件 | ✅ 成功 |
-| `code` 命令可用 | 终端输入 `code .` | ✅ 成功 |
-| Markdown All in One | `[TOC]` 生成目录 | ✅ 成功 |
-| Markdown Preview Enhanced | `Ctrl+K V` 并排预览 | ✅ 成功 |
-| Paste Image | `Ctrl+Alt+V` 粘贴图片 | ✅ 成功 |
-
-**VS Code 插件机制的核心价值**：通过插件，一个轻量级编辑器可以扩展为功能强大的写作、开发环境——这正是 **"微内核 + 插件"** 架构思想的体现。
-
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">测试项</th>
+<th style="text-align: left;">验证方式</th>
+<th style="text-align: left;">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">VS Code 安装</td>
+<td style="text-align: left;">启动、创建新文件</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>code</code> 命令可用</td>
+<td style="text-align: left;">终端输入 <code>code .</code></td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">Markdown All in One</td>
+<td style="text-align: left;"><code>[TOC]</code> 生成目录</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">Markdown Preview Enhanced</td>
+<td style="text-align: left;"><code>Ctrl+K V</code> 并排预览</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">Paste Image</td>
+<td style="text-align: left;"><code>Ctrl+Alt+V</code> 粘贴图片</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+</tbody>
+</table>
+<p><strong>VS Code 插件机制的核心价值</strong>：通过插件，一个轻量级编辑器可以扩展为功能强大的写作、开发环境——这正是 <strong>"微内核 + 插件"</strong> 架构思想的体现。</p>
 <h3 id="exp2-knowledge">2.5 知识总结</h3>
 
-**1. 代码编辑器 vs IDE：**
-
-| 对比维度 | 代码编辑器（VS Code） | IDE（PyCharm/IntelliJ） |
-|:---------|:----------------------|:------------------------|
-| 启动速度 | 快 | 较慢 |
-| 核心功能 | 以编辑为核心，通过插件扩展 | 集成编译/调试/构建等全套工具链 |
-| 资源占用 | 较低 | 较高 |
-| 灵活性 | 按需安装插件，轻量可定制 | 功能全面但较为固定 |
-| 典型场景 | 轻量开发、文档写作、脚本编辑 | 大型项目的全生命周期开发 |
-
-**2. Markdown 核心语法速查：**
-
-| 元素 | 语法 | 效果 |
-|:-----|:-----|:-----|
-| 标题 | `# H1` `## H2` `### H3` | 1-6级标题 |
-| 加粗 | `**粗体**` | **粗体** |
-| 斜体 | `*斜体*` | *斜体* |
-| 链接 | `[文字](URL)` | [超链接](URL) |
-| 图片 | `![alt](路径)` | 插入图片 |
-| 代码行 | `` `code` `` | `code` |
-| 代码块 | ` ```lang ... ``` ` | 语法高亮代码块 |
-| 表格 | `| A | B |` | 表格 |
-| 引用 | `> 引用` | 引用块 |
-
+<p><strong>1. 代码编辑器 vs IDE：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">对比维度</th>
+<th style="text-align: left;">代码编辑器（VS Code）</th>
+<th style="text-align: left;">IDE（PyCharm/IntelliJ）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">启动速度</td>
+<td style="text-align: left;">快</td>
+<td style="text-align: left;">较慢</td>
+</tr>
+<tr>
+<td style="text-align: left;">核心功能</td>
+<td style="text-align: left;">以编辑为核心，通过插件扩展</td>
+<td style="text-align: left;">集成编译/调试/构建等全套工具链</td>
+</tr>
+<tr>
+<td style="text-align: left;">资源占用</td>
+<td style="text-align: left;">较低</td>
+<td style="text-align: left;">较高</td>
+</tr>
+<tr>
+<td style="text-align: left;">灵活性</td>
+<td style="text-align: left;">按需安装插件，轻量可定制</td>
+<td style="text-align: left;">功能全面但较为固定</td>
+</tr>
+<tr>
+<td style="text-align: left;">典型场景</td>
+<td style="text-align: left;">轻量开发、文档写作、脚本编辑</td>
+<td style="text-align: left;">大型项目的全生命周期开发</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. Markdown 核心语法速查：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">元素</th>
+<th style="text-align: left;">语法</th>
+<th style="text-align: left;">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">标题</td>
+<td style="text-align: left;"><code># H1</code> <code>## H2</code> <code>### H3</code></td>
+<td style="text-align: left;">1-6级标题</td>
+</tr>
+<tr>
+<td style="text-align: left;">加粗</td>
+<td style="text-align: left;"><code>**粗体**</code></td>
+<td style="text-align: left;"><strong>粗体</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">斜体</td>
+<td style="text-align: left;"><code>*斜体*</code></td>
+<td style="text-align: left;"><em>斜体</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">链接</td>
+<td style="text-align: left;"><code>[文字](URL)</code></td>
+<td style="text-align: left;"><a href="URL">超链接</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">图片</td>
+<td style="text-align: left;"><code>![alt](路径)</code></td>
+<td style="text-align: left;">插入图片</td>
+</tr>
+<tr>
+<td style="text-align: left;">代码行</td>
+<td style="text-align: left;"><code>`code`</code></td>
+<td style="text-align: left;"><code>code</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">代码块</td>
+<td style="text-align: left;"><code>```lang ... ```</code></td>
+<td style="text-align: left;">语法高亮代码块</td>
+</tr>
+<tr>
+<td style="text-align: left;">表格</td>
+<td style="text-align: left;"><code>| A | B |</code></td>
+<td style="text-align: left;">表格</td>
+</tr>
+<tr>
+<td style="text-align: left;">引用</td>
+<td style="text-align: left;"><code>&gt; 引用</code></td>
+<td style="text-align: left;">引用块</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp2-problems">2.6 出现问题</h3>
 
->  请记录实验中实际遇到的问题和解决方法。
-> - 安装 VS Code 后命令行无法使用 `code` 命令？
-> - 插件搜索不到或安装失败？
-> - Markdown 预览中图片无法显示？
-
-常见问题参考：
-
-| 问题现象 | 可能原因 | 解决方法 |
-|:---------|:---------|:---------|
-| `code` 命令不可用 | 未添加到 PATH | 重新运行安装程序勾选；或手动添加系统环境变量 |
-| 预览中图片无法显示 | 图片路径错误 | 使用相对路径，确认图片文件确实存在 |
-| `[TOC]` 不生成目录 | 未安装 Markdown All in One | 安装并启用该插件 |
-| 预览窗口显示异常 | 插件未启用 | 检查扩展面板中插件状态 |
-
+<blockquote>
+<p>请记录实验中实际遇到的问题和解决方法。
+- 安装 VS Code 后命令行无法使用 <code>code</code> 命令？
+- 插件搜索不到或安装失败？
+- Markdown 预览中图片无法显示？</p>
+</blockquote>
+<p>常见问题参考：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">问题现象</th>
+<th style="text-align: left;">可能原因</th>
+<th style="text-align: left;">解决方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>code</code> 命令不可用</td>
+<td style="text-align: left;">未添加到 PATH</td>
+<td style="text-align: left;">重新运行安装程序勾选；或手动添加系统环境变量</td>
+</tr>
+<tr>
+<td style="text-align: left;">预览中图片无法显示</td>
+<td style="text-align: left;">图片路径错误</td>
+<td style="text-align: left;">使用相对路径，确认图片文件确实存在</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>[TOC]</code> 不生成目录</td>
+<td style="text-align: left;">未安装 Markdown All in One</td>
+<td style="text-align: left;">安装并启用该插件</td>
+</tr>
+<tr>
+<td style="text-align: left;">预览窗口显示异常</td>
+<td style="text-align: left;">插件未启用</td>
+<td style="text-align: left;">检查扩展面板中插件状态</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp2-reflection">2.7 心得体会</h3>
 
-> 安装VS Code前，我一直以为"编辑器不就是输入代码的地方"，打开主界面、看到那一排简洁的活动栏时，我才意识到自己过去对工具的理解有多浅薄。这节实验让我真正开始把VS Code当作一个完整的工作台来认识，而不再只是"打字用的窗口"。
-
->实验中印象最深的是一处对比：VS Code作为一款免费开源编辑器，凭借强大的插件生态成为全球开发者最常用的工具，而国内某些编辑器仍采用高昂的付费模式，功能和用户量却远远不及。这让我联想到课程思政中常讲的"格局"二字——真正有价值的东西，往往不是靠封闭和收费来维系的，而是通过开放、共享、协作获得长久的生命力。微软将VS Code开源，看似"放弃"了商业利益，却赢得了整个开发者社区的信任和贡献，这种长期主义的视野值得我深思。
-
->Markdown的写作体验也让我有所感悟：写文档时只需要用#表示标题、用*表示强调，完全不用纠结字号、颜色、行距这些排版问题。这种"关注点分离"的设计哲学——内容创作者专注于内容本身，样式和渲染交给工具处理——对我启发很大。学习生活中，我是否也经常把精力耗费在次要的事情上，反而忽略了真正重要的核心？把注意力聚焦在最有价值的部分，可能是效率提升的关键。
-
->VS Code的插件生态则是另一种触动。我的实验环境里安装的Markdown插件都来自全球各地的开发者，他们素未谋面，却通过开源社区协作，共同打磨出一件件高质量的工具。这让我真切感受到"众人拾柴火焰高"的力量。未来我掌握了一定的开发能力后，也希望参与到这样的开源社区中，为技术生态贡献一份绵薄之力——这不只是技术能力的体现，更是对"责任"二字的践行。
-
----
-
+<blockquote>
+<p>安装VS Code前，我一直以为"编辑器不就是输入代码的地方"，打开主界面、看到那一排简洁的活动栏时，我才意识到自己过去对工具的理解有多浅薄。这节实验让我真正开始把VS Code当作一个完整的工作台来认识，而不再只是"打字用的窗口"。</p>
+<p>实验中印象最深的是一处对比：VS Code作为一款免费开源编辑器，凭借强大的插件生态成为全球开发者最常用的工具，而国内某些编辑器仍采用高昂的付费模式，功能和用户量却远远不及。这让我联想到课程思政中常讲的"格局"二字——真正有价值的东西，往往不是靠封闭和收费来维系的，而是通过开放、共享、协作获得长久的生命力。微软将VS Code开源，看似"放弃"了商业利益，却赢得了整个开发者社区的信任和贡献，这种长期主义的视野值得我深思。</p>
+<p>Markdown的写作体验也让我有所感悟：写文档时只需要用#表示标题、用*表示强调，完全不用纠结字号、颜色、行距这些排版问题。这种"关注点分离"的设计哲学——内容创作者专注于内容本身，样式和渲染交给工具处理——对我启发很大。学习生活中，我是否也经常把精力耗费在次要的事情上，反而忽略了真正重要的核心？把注意力聚焦在最有价值的部分，可能是效率提升的关键。</p>
+<p>VS Code的插件生态则是另一种触动。我的实验环境里安装的Markdown插件都来自全球各地的开发者，他们素未谋面，却通过开源社区协作，共同打磨出一件件高质量的工具。这让我真切感受到"众人拾柴火焰高"的力量。未来我掌握了一定的开发能力后，也希望参与到这样的开源社区中，为技术生态贡献一份绵薄之力——这不只是技术能力的体现，更是对"责任"二字的践行。</p>
+</blockquote>
+<hr />
 <!-- ================================================================== -->
 <!--                            实验三                                    -->
 <!-- ================================================================== -->
@@ -810,34 +1129,56 @@ hexo server    # 或简写为 hexo s
 
 <h3 id="exp3-purpose">3.1 实验目的</h3>
 
-本次实验旨在使用 **Hexo 静态站点生成器（SSG）** 构建一个完整的个人博客站点，并部署到 **GitHub Pages** 实现免费上线。通过完整体验 **环境准备 → 项目初始化 → 内容编写 → 主题定制 → 本地预览 → 部署上线**六个核心环节，理解静态站点生成器的工作原理及其与动态站点的本质区别。
-
+<p>本次实验旨在使用 <strong>Hexo 静态站点生成器（SSG）</strong> 构建一个完整的个人博客站点，并部署到 <strong>GitHub Pages</strong> 实现免费上线。通过完整体验 <strong>环境准备 → 项目初始化 → 内容编写 → 主题定制 → 本地预览 → 部署上线</strong>六个核心环节，理解静态站点生成器的工作原理及其与动态站点的本质区别。</p>
 <h3 id="exp3-env">3.2 实验环境</h3>
 
-| 项目 | 配置信息 |
-|:-----|:---------|
-| 操作系统 | Windows 11 专业版 22H2 |
-| 运行时 | Node.js v20.x LTS |
-| 博客框架 | Hexo 7.x |
-| 主题 | NexT（或其他） |
-| 部署平台 | GitHub Pages |
-| 部署工具 | hexo-deployer-git |
-| 本地预览 | http://localhost:4000 |
-
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">项目</th>
+<th style="text-align: left;">配置信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">操作系统</td>
+<td style="text-align: left;">Windows 11 专业版 22H2</td>
+</tr>
+<tr>
+<td style="text-align: left;">运行时</td>
+<td style="text-align: left;">Node.js v20.x LTS</td>
+</tr>
+<tr>
+<td style="text-align: left;">博客框架</td>
+<td style="text-align: left;">Hexo 7.x</td>
+</tr>
+<tr>
+<td style="text-align: left;">主题</td>
+<td style="text-align: left;">NexT（或其他）</td>
+</tr>
+<tr>
+<td style="text-align: left;">部署平台</td>
+<td style="text-align: left;">GitHub Pages</td>
+</tr>
+<tr>
+<td style="text-align: left;">部署工具</td>
+<td style="text-align: left;">hexo-deployer-git</td>
+</tr>
+<tr>
+<td style="text-align: left;">本地预览</td>
+<td style="text-align: left;">http://localhost:4000</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp3-process">3.3 实验过程（图文并茂）</h3>
 
 <h4>步骤一：创建并编写博客文章</h4>
 
-使用 Hexo CLI 创建新文章，编辑 Front-matter 元数据和正文内容：
-
-```bash
-hexo new "我的第一篇博客"
-```
-
-编辑生成的 Markdown 文件：
-
-```markdown
----
+<p>使用 Hexo CLI 创建新文章，编辑 Front-matter 元数据和正文内容：</p>
+<pre><code class="language-bash">hexo new &quot;我的第一篇博客&quot;
+</code></pre>
+<p>编辑生成的 Markdown 文件：</p>
+<pre><code class="language-markdown">---
 title: 我的第一篇博客
 date: 2026-07-05 10:00:00
 tags:
@@ -855,149 +1196,214 @@ categories: 技术
 - 记录学习和成长
 - 分享知识和经验
 - 打造个人技术品牌
-```
-
-生成静态页面并预览：
-
-```bash
-hexo generate    # 或 hexo g
+</code></pre>
+<p>生成静态页面并预览：</p>
+<pre><code class="language-bash">hexo generate    # 或 hexo g
 hexo server      # 或 hexo s
-```
-
-<img src="图4-1.png" alt="图4-1：新建文章在浏览器中的效果">
+</code></pre>
+<p><img src="图4-1.png" alt="图4-1：新建文章在浏览器中的效果"></p>
 <div class="img-caption">图4-1：第一篇博客文章在本地预览中的效果</div>
 
 <h4>步骤二：更换主题</h4>
 
-以 NexT 主题为例：
-
-```bash
-git clone https://github.com/theme-next/hexo-theme-next themes/next
-```
-
-修改 `_config.yml` 中的 `theme` 字段为 `next`，然后：
-
-```bash
-hexo clean && hexo generate && hexo server
-```
-
-<img src="图4-2.png" alt="图4-2：更换 NexT 主题后的博客首页">
+<p>以 NexT 主题为例：</p>
+<pre><code class="language-bash">git clone https://github.com/theme-next/hexo-theme-next themes/next
+</code></pre>
+<p>修改 <code>_config.yml</code> 中的 <code>theme</code> 字段为 <code>next</code>，然后：</p>
+<pre><code class="language-bash">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo server
+</code></pre>
+<p><img src="图4-2.png" alt="图4-2：更换 NexT 主题后的博客首页"></p>
 <div class="img-caption">图4-2：NexT 主题效果展示</div>
 
 <h4>步骤三：创建 GitHub 仓库</h4>
 
-在 GitHub 上创建两个仓库：
-
-| 仓库 | 名称 | 可见性 | 用途 |
-|:-----|:-----|:-------|:-----|
-| 源码仓库 | `my-blog` | Private（推荐） | 存放 Hexo 源码 |
-| 部署仓库 | `[用户名].github.io` | Public | 托管静态页面 |
-
-> ⚠️ **关键**：部署仓库的名称必须是 `你的GitHub用户名.github.io` 格式，否则 GitHub Pages 无法正确识别。
-
-<img src="图4-3.png" alt="图4-3：GitHub 创建仓库界面">
+<p>在 GitHub 上创建两个仓库：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">仓库</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">可见性</th>
+<th style="text-align: left;">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">源码仓库</td>
+<td style="text-align: left;"><code>my-blog</code></td>
+<td style="text-align: left;">Private（推荐）</td>
+<td style="text-align: left;">存放 Hexo 源码</td>
+</tr>
+<tr>
+<td style="text-align: left;">部署仓库</td>
+<td style="text-align: left;"><code>[用户名].github.io</code></td>
+<td style="text-align: left;">Public</td>
+<td style="text-align: left;">托管静态页面</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>关键</strong>：部署仓库的名称必须是 <code>你的GitHub用户名.github.io</code> 格式，否则 GitHub Pages 无法正确识别。</p>
+</blockquote>
+<p><img src="图4-3.png" alt="图4-3：GitHub 创建仓库界面"></p>
 <div class="img-caption">图4-3：在 GitHub 上创建部署仓库</div>
 
 <h4>步骤四：配置并执行部署</h4>
 
-安装部署插件：
-
-```bash
-npm install hexo-deployer-git --save
-```
-
-在 `_config.yml` 末尾添加部署配置：
-
-```yaml
-deploy:
+<p>安装部署插件：</p>
+<pre><code class="language-bash">npm install hexo-deployer-git --save
+</code></pre>
+<p>在 <code>_config.yml</code> 末尾添加部署配置：</p>
+<pre><code class="language-yaml">deploy:
   type: git
   repo: https://github.com/你的用户名/你的用户名.github.io.git
   branch: main
-```
-
-执行一键部署：
-
-```bash
-hexo clean && hexo generate && hexo deploy
-```
-
+</code></pre>
+<p>执行一键部署：</p>
+<pre><code class="language-bash">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy
+</code></pre>
 <div class="placeholder-img">📷 [截图占位] 图4-4：部署命令执行成功输出</div>
 <div class="img-caption">图4-4：hexo deploy 部署成功输出</div>
 
 <h4>步骤五：访问上线博客</h4>
 
-在浏览器中访问 `https://你的用户名.github.io`，确认博客成功上线。
-
+<p>在浏览器中访问 <code>https://你的用户名.github.io</code>，确认博客成功上线。</p>
 <div class="placeholder-img">📷 [截图占位] 图4-5：部署后的博客线上访问效果</div>
 <div class="img-caption">图4-5：GitHub Pages 上的博客最终效果</div>
 
 <h3 id="exp3-result">3.4 实验结果</h3>
 
-| 测试项 | 验证方式 | 结果 |
-|:-------|:---------|:-----|
-| 文章创建 | `hexo new "标题"` | ✅ 成功 |
-| 文章渲染 | http://localhost:4000 | ✅ 成功 |
-| 主题更换 | NexT 主题生效 | ✅ 成功 |
-| GitHub Pages 部署 | 访问 URL | ✅ 成功 |
-| 线上访问 | `https://[用户名].github.io` | ✅ 成功 |
-
-**完整工作流：**
-
-```
-写作 (Markdown) → hexo generate (生成HTML) → git push (推送源码)
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">测试项</th>
+<th style="text-align: left;">验证方式</th>
+<th style="text-align: left;">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">文章创建</td>
+<td style="text-align: left;"><code>hexo new "标题"</code></td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">文章渲染</td>
+<td style="text-align: left;">http://localhost:4000</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">主题更换</td>
+<td style="text-align: left;">NexT 主题生效</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">GitHub Pages 部署</td>
+<td style="text-align: left;">访问 URL</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">线上访问</td>
+<td style="text-align: left;"><code>https://[用户名].github.io</code></td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+</tbody>
+</table>
+<p><strong>完整工作流：</strong></p>
+<pre><code>写作 (Markdown) → hexo generate (生成HTML) → git push (推送源码)
                                                       ↓
                   用户访问 ← GitHub Pages (托管) ← hexo deploy (部署)
-```
-
+</code></pre>
 <h3 id="exp3-knowledge">3.5 知识总结</h3>
 
-**1. 静态站点生成器（SSG）的工作原理：**
-
-> **输入**：Markdown 源文件 + 模板文件 + 配置文件
-> → **处理**：SSG 引擎读取文章和模板，将 Markdown 渲染为 HTML，应用主题样式
-> → **输出**：完整的静态 HTML/CSS/JS 文件集合（`public/` 目录）
-
-核心理念是 **"提前做好"（Build-time Rendering）**，而非动态站点的 **"现场制作"（Runtime Rendering）**。
-
-**2. Hexo 核心操作三件套：**
-
-| 命令 | 简写 | 作用 |
-|:-----|:-----|:-----|
-| `hexo clean` | — | 清理缓存和已生成文件 |
-| `hexo generate` | `hexo g` | 将 Markdown 源文件编译为静态 HTML |
-| `hexo deploy` | `hexo d` | 将静态文件部署到远程服务器 |
-
-**3. GitHub Pages 部署原理：**
-
-> GitHub Pages 会读取指定分支（如 `main` 或 `gh-pages`）根目录下的 `index.html`，并将其作为网站首页进行托管。Hexo 生成的静态文件被推送到该分支后，GitHub 自动配置 Web 服务器提供访问。
-
+<p><strong>1. 静态站点生成器（SSG）的工作原理：</strong></p>
+<blockquote>
+<p><strong>输入</strong>：Markdown 源文件 + 模板文件 + 配置文件
+→ <strong>处理</strong>：SSG 引擎读取文章和模板，将 Markdown 渲染为 HTML，应用主题样式
+→ <strong>输出</strong>：完整的静态 HTML/CSS/JS 文件集合（<code>public/</code> 目录）</p>
+</blockquote>
+<p>核心理念是 <strong>"提前做好"（Build-time Rendering）</strong>，而非动态站点的 <strong>"现场制作"（Runtime Rendering）</strong>。</p>
+<p><strong>2. Hexo 核心操作三件套：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">命令</th>
+<th style="text-align: left;">简写</th>
+<th style="text-align: left;">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>hexo clean</code></td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">清理缓存和已生成文件</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hexo generate</code></td>
+<td style="text-align: left;"><code>hexo g</code></td>
+<td style="text-align: left;">将 Markdown 源文件编译为静态 HTML</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hexo deploy</code></td>
+<td style="text-align: left;"><code>hexo d</code></td>
+<td style="text-align: left;">将静态文件部署到远程服务器</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3. GitHub Pages 部署原理：</strong></p>
+<blockquote>
+<p>GitHub Pages 会读取指定分支（如 <code>main</code> 或 <code>gh-pages</code>）根目录下的 <code>index.html</code>，并将其作为网站首页进行托管。Hexo 生成的静态文件被推送到该分支后，GitHub 自动配置 Web 服务器提供访问。</p>
+</blockquote>
 <h3 id="exp3-problems">3.6 出现问题</h3>
 
-> **[待补充]** 请记录实验中实际遇到的问题和解决方法。
-> - hexo deploy 提示认证失败怎么解决？
-> - 部署后页面样式丢失（CSS 404）怎么排查？
-> - 仓库命名不规范导致 404？
-
-常见问题参考：
-
-| 问题现象 | 可能原因 | 解决方法 |
-|:---------|:---------|:---------|
-| GitHub Pages 显示 404 | 仓库名称不是 `用户名.github.io` | 检查并修改仓库命名 |
-| 部署后样式丢失 | `_config.yml` 中 `url` 配置错误 | 确保 `url` 设为 `https://用户名.github.io` |
-| 部署认证失败 | 未配置 Git 凭证或 Token | 使用 Personal Access Token 代替密码 |
-| `hexo deploy` 报错 | 未安装 `hexo-deployer-git` | 执行 `npm install hexo-deployer-git --save` |
-
+<blockquote>
+<p><strong>[待补充]</strong> 请记录实验中实际遇到的问题和解决方法。
+- hexo deploy 提示认证失败怎么解决？
+- 部署后页面样式丢失（CSS 404）怎么排查？
+- 仓库命名不规范导致 404？</p>
+</blockquote>
+<p>常见问题参考：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">问题现象</th>
+<th style="text-align: left;">可能原因</th>
+<th style="text-align: left;">解决方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">GitHub Pages 显示 404</td>
+<td style="text-align: left;">仓库名称不是 <code>用户名.github.io</code></td>
+<td style="text-align: left;">检查并修改仓库命名</td>
+</tr>
+<tr>
+<td style="text-align: left;">部署后样式丢失</td>
+<td style="text-align: left;"><code>_config.yml</code> 中 <code>url</code> 配置错误</td>
+<td style="text-align: left;">确保 <code>url</code> 设为 <code>https://用户名.github.io</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">部署认证失败</td>
+<td style="text-align: left;">未配置 Git 凭证或 Token</td>
+<td style="text-align: left;">使用 Personal Access Token 代替密码</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hexo deploy</code> 报错</td>
+<td style="text-align: left;">未安装 <code>hexo-deployer-git</code></td>
+<td style="text-align: left;">执行 <code>npm install hexo-deployer-git --save</code></td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp3-reflection">3.7 心得体会</h3>
 
-> **[待补充]** 请结合课程思政要求与个人实际经历撰写心得体会。
-
-**写作提示**：
+<blockquote>
+<p><strong>[待补充]</strong> 请结合课程思政要求与个人实际经历撰写心得体会。</p>
+</blockquote>
+<p><strong>写作提示</strong>：
 - 从零开始搭建一个博客并让全世界都能访问，整个过程你最大的收获是什么？
 - GitHub Pages 提供免费的静态托管服务，这体现了怎样的互联网精神？对比国内 Coding Pages、Gitee Pages 等类似服务，你有什么观察？
-- 使用 Hexo + GitHub Pages 搭建博客，零成本拥有了个人网站——开源工具降低了多少创作门槛？这是否体现了技术的民主化？
-
----
-
+- 使用 Hexo + GitHub Pages 搭建博客，零成本拥有了个人网站——开源工具降低了多少创作门槛？这是否体现了技术的民主化？</p>
+<hr />
 <!-- ================================================================== -->
 <!--                            实验四                                    -->
 <!-- ================================================================== -->
@@ -1006,72 +1412,124 @@ hexo clean && hexo generate && hexo deploy
 
 <h3 id="exp4-purpose">4.1 实验目的</h3>
 
-本次实验旨在使用 **Oracle VirtualBox** 虚拟机软件安装 **Ubuntu Server 22.04 LTS** 操作系统，通过**克隆技术**快速构建一个包含多台虚拟机的虚拟化实验环境。理解和掌握基于虚拟机的开发环境构建方法，特别是**双网卡（NAT + Host-Only）** 网络方案的设计与配置。
-
+<p>本次实验旨在使用 <strong>Oracle VirtualBox</strong> 虚拟机软件安装 <strong>Ubuntu Server 22.04 LTS</strong> 操作系统，通过<strong>克隆技术</strong>快速构建一个包含多台虚拟机的虚拟化实验环境。理解和掌握基于虚拟机的开发环境构建方法，特别是<strong>双网卡（NAT + Host-Only）</strong> 网络方案的设计与配置。</p>
 <h3 id="exp4-env">4.2 实验环境</h3>
 
-| 项目 | 配置信息 |
-|:-----|:---------|
-| 宿主机操作系统 | Windows 11 专业版 22H2 |
-| 虚拟化软件 | Oracle VirtualBox 7.0 |
-| 虚拟机操作系统 | Ubuntu Server 22.04 LTS (64-bit) |
-| 虚拟机配置 | 内存 2GB，硬盘 20GB（动态分配 VDI） |
-| 网络方案 | 双网卡：NAT（上网）+ Host-Only（内网互联） |
-| 虚拟机节点 | template（模板机）、node1(192.168.56.101)、node2(192.168.56.102)、node3(192.168.56.103) |
-
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">项目</th>
+<th style="text-align: left;">配置信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">宿主机操作系统</td>
+<td style="text-align: left;">Windows 11 专业版 22H2</td>
+</tr>
+<tr>
+<td style="text-align: left;">虚拟化软件</td>
+<td style="text-align: left;">Oracle VirtualBox 7.0</td>
+</tr>
+<tr>
+<td style="text-align: left;">虚拟机操作系统</td>
+<td style="text-align: left;">Ubuntu Server 22.04 LTS (64-bit)</td>
+</tr>
+<tr>
+<td style="text-align: left;">虚拟机配置</td>
+<td style="text-align: left;">内存 2GB，硬盘 20GB（动态分配 VDI）</td>
+</tr>
+<tr>
+<td style="text-align: left;">网络方案</td>
+<td style="text-align: left;">双网卡：NAT（上网）+ Host-Only（内网互联）</td>
+</tr>
+<tr>
+<td style="text-align: left;">虚拟机节点</td>
+<td style="text-align: left;">template（模板机）、node1(192.168.56.101)、node2(192.168.56.102)、node3(192.168.56.103)</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp4-process">4.3 实验过程（图文并茂）</h3>
 
 <h4>步骤一：下载与安装 VirtualBox</h4>
 
-访问 VirtualBox 官网 **https://www.virtualbox.org/** 下载 Windows 版安装包，按向导完成安装，**安装后建议重启电脑**以确保虚拟网卡驱动正确加载。
-
+<p>访问 VirtualBox 官网 <strong>https://www.virtualbox.org/</strong> 下载 Windows 版安装包，按向导完成安装，<strong>安装后建议重启电脑</strong>以确保虚拟网卡驱动正确加载。</p>
 <div class="placeholder-img">📷 [截图占位] 图5-1：VirtualBox 安装完成界面</div>
 <div class="img-caption">图5-1：VirtualBox 安装向导</div>
 
 <h4>步骤二：下载 Ubuntu Server ISO</h4>
 
-访问 Ubuntu 官网 **https://ubuntu.com/download/server**，下载 **22.04 LTS** 版本的 ISO 镜像文件（约 2GB）。
-
+<p>访问 Ubuntu 官网 <strong>https://ubuntu.com/download/server</strong>，下载 <strong>22.04 LTS</strong> 版本的 ISO 镜像文件（约 2GB）。</p>
 <h4>步骤三：创建模板虚拟机</h4>
 
-新建虚拟机并配置：
-
-| 配置项 | 值 |
-|:-------|:---|
-| 名称 | `ubuntu-template` |
-| 类型 | Linux / Ubuntu (64-bit) |
-| 内存 | 2048 MB |
-| 硬盘 | VDI 格式，动态分配，20 GB |
-
-**关键配置——双网卡网络方案：**
-
-| 适配器 | 连接方式 | IP分配 | 用途 |
-|:-------|:---------|:-------|:-----|
-| 适配器1（enp0s3） | NAT | DHCP 自动 | 访问互联网、下载软件 |
-| 适配器2（enp0s8） | Host-Only | 静态IP | 多虚拟机之间内网互联 |
-
+<p>新建虚拟机并配置：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">配置项</th>
+<th style="text-align: left;">值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">名称</td>
+<td style="text-align: left;"><code>ubuntu-template</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">类型</td>
+<td style="text-align: left;">Linux / Ubuntu (64-bit)</td>
+</tr>
+<tr>
+<td style="text-align: left;">内存</td>
+<td style="text-align: left;">2048 MB</td>
+</tr>
+<tr>
+<td style="text-align: left;">硬盘</td>
+<td style="text-align: left;">VDI 格式，动态分配，20 GB</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键配置——双网卡网络方案：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">适配器</th>
+<th style="text-align: left;">连接方式</th>
+<th style="text-align: left;">IP分配</th>
+<th style="text-align: left;">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">适配器1（enp0s3）</td>
+<td style="text-align: left;">NAT</td>
+<td style="text-align: left;">DHCP 自动</td>
+<td style="text-align: left;">访问互联网、下载软件</td>
+</tr>
+<tr>
+<td style="text-align: left;">适配器2（enp0s8）</td>
+<td style="text-align: left;">Host-Only</td>
+<td style="text-align: left;">静态IP</td>
+<td style="text-align: left;">多虚拟机之间内网互联</td>
+</tr>
+</tbody>
+</table>
 <div class="placeholder-img">📷 [截图占位] 图5-2：VirtualBox 双网卡配置界面</div>
 <div class="img-caption">图5-2：虚拟机网络设置——适配器1(NAT) + 适配器2(Host-Only)</div>
 
 <h4>步骤四：安装 Ubuntu Server</h4>
 
-启动虚拟机，选择 ISO 镜像，按向导完成系统安装。关键步骤：在软件选择页面**务必按空格键选中 "Install OpenSSH server"**，以便后续远程登录管理。
-
+<p>启动虚拟机，选择 ISO 镜像，按向导完成系统安装。关键步骤：在软件选择页面<strong>务必按空格键选中 "Install OpenSSH server"</strong>，以便后续远程登录管理。</p>
 <div class="placeholder-img">📷 [截图占位] 图5-3：Ubuntu Server 安装——SSH 服务勾选</div>
 <div class="img-caption">图5-3：安装过程中勾选 OpenSSH server</div>
 
 <h4>步骤五：配置静态IP（Netplan）</h4>
 
-登录模板机后，编辑 Netplan 配置文件：
-
-```bash
-sudo nano /etc/netplan/50-cloud-init.yaml
-```
-
-修改内容为：
-
-```yaml
-network:
+<p>登录模板机后，编辑 Netplan 配置文件：</p>
+<pre><code class="language-bash">sudo nano /etc/netplan/50-cloud-init.yaml
+</code></pre>
+<p>修改内容为：</p>
+<pre><code class="language-yaml">network:
   version: 2
   renderer: networkd
   ethernets:
@@ -1083,22 +1541,17 @@ network:
         - 192.168.56.101/24
       nameservers:
         addresses: [8.8.8.8, 114.114.114.114]
-```
-
-应用并验证：
-
-```bash
-sudo netplan apply
+</code></pre>
+<p>应用并验证：</p>
+<pre><code class="language-bash">sudo netplan apply
 ip addr show    # 确认IP已生效
-```
-
+</code></pre>
 <div class="placeholder-img">📷 [截图占位] 图5-4：Netplan 配置编辑和 ip addr 验证结果</div>
 <div class="img-caption">图5-4：静态IP配置生效后的验证</div>
 
 <h4>步骤六：配置主机名与 hosts 解析</h4>
 
-```bash
-sudo hostnamectl set-hostname template
+<pre><code class="language-bash">sudo hostnamectl set-hostname template
 
 sudo nano /etc/hosts
 # 在文件末尾添加：
@@ -1106,55 +1559,80 @@ sudo nano /etc/hosts
 192.168.56.102 node1
 192.168.56.103 node2
 192.168.56.104 node3
-```
-
+</code></pre>
 <h4>步骤七：克隆虚拟机</h4>
 
-关闭模板机后，在 VirtualBox 中右键点击模板机 → **"克隆"** → 选择 **"完全克隆"**，分别克隆出 `node1`、`node2`、`node3`。
-
-> ⚠️ **重要**：必须选择"完全克隆"而非"链接克隆"，以确保每台虚拟机独立运行且可分别修改网络配置。
-
+<p>关闭模板机后，在 VirtualBox 中右键点击模板机 → <strong>"克隆"</strong> → 选择 <strong>"完全克隆"</strong>，分别克隆出 <code>node1</code>、<code>node2</code>、<code>node3</code>。</p>
+<blockquote>
+<p>⚠️ <strong>重要</strong>：必须选择"完全克隆"而非"链接克隆"，以确保每台虚拟机独立运行且可分别修改网络配置。</p>
+</blockquote>
 <div class="placeholder-img">📷 [截图占位] 图5-5：VirtualBox 克隆虚拟机操作</div>
 <div class="img-caption">图5-5：从模板机克隆出 node1/node2/node3</div>
 
 <h4>步骤八：修改克隆机的主机名和IP</h4>
 
-对每台克隆机分别执行：
-
-```bash
-sudo hostnamectl set-hostname node1          # 依次改为 node1/node2/node3
+<p>对每台克隆机分别执行：</p>
+<pre><code class="language-bash">sudo hostnamectl set-hostname node1          # 依次改为 node1/node2/node3
 sudo nano /etc/netplan/50-cloud-init.yaml   # 修改IP为 192.168.56.102/103/104
 sudo netplan apply
-```
-
+</code></pre>
 <h4>步骤九：验证多机环境</h4>
 
-在 node1 上执行连通性测试：
-
-```bash
-ping -c 3 8.8.8.8       # 测试外网连接
+<p>在 node1 上执行连通性测试：</p>
+<pre><code class="language-bash">ping -c 3 8.8.8.8       # 测试外网连接
 ping -c 3 192.168.55.1  # 测试宿主机连接
 ping -c 3 node2         # 测试虚拟机之间连接
 ping -c 3 node3
-```
-
+</code></pre>
 <div class="placeholder-img">📷 [截图占位] 图5-6：多机互通 ping 测试结果</div>
 <div class="img-caption">图5-6：node1 ping node2/node3 全部成功</div>
 
 <h3 id="exp4-result">4.4 实验结果</h3>
 
-| 测试项 | 源 | 目标 | 结果 |
-|:-------|:---|:-----|:-----|
-| 外网连接 | node1 | 8.8.8.8 (Google DNS) | ✅ 成功 |
-| 宿主机连接 | node1 | 192.168.55.1 | ✅ 成功 |
-| 虚拟机互联 | node1 | node2 (192.168.56.102) | ✅ 成功 |
-| 虚拟机互联 | node1 | node3 (192.168.56.103) | ✅ 成功 |
-| 模板机IP | template | 192.168.56.101 | ✅ 已配置 |
-
-**最终环境架构：**
-
-```
-┌─────────────────────────────────────────────────┐
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">测试项</th>
+<th style="text-align: left;">源</th>
+<th style="text-align: left;">目标</th>
+<th style="text-align: left;">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">外网连接</td>
+<td style="text-align: left;">node1</td>
+<td style="text-align: left;">8.8.8.8 (Google DNS)</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">宿主机连接</td>
+<td style="text-align: left;">node1</td>
+<td style="text-align: left;">192.168.55.1</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">虚拟机互联</td>
+<td style="text-align: left;">node1</td>
+<td style="text-align: left;">node2 (192.168.56.102)</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">虚拟机互联</td>
+<td style="text-align: left;">node1</td>
+<td style="text-align: left;">node3 (192.168.56.103)</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">模板机IP</td>
+<td style="text-align: left;">template</td>
+<td style="text-align: left;">192.168.56.101</td>
+<td style="text-align: left;">✅ 已配置</td>
+</tr>
+</tbody>
+</table>
+<p><strong>最终环境架构：</strong></p>
+<pre><code>┌─────────────────────────────────────────────────┐
 │                    宿主机 Windows                │
 │                  VirtualBox 管理器               │
 │  ┌──────────┐  ┌──────────┐  ┌──────────┐      │
@@ -1170,53 +1648,106 @@ ping -c 3 node3
 │                     │                            │
 │              宿主机 (192.168.56.1)               │
 └─────────────────────────────────────────────────┘
-```
-
+</code></pre>
 <h3 id="exp4-knowledge">4.5 知识总结</h3>
 
-**1. 三种虚拟机网络模式对比：**
-
-| 网络模式 | 虚拟机↔宿主机 | 虚拟机↔外网 | 外网↔虚拟机 | 虚拟机之间 | 典型用途 |
-|:---------|:-------------|:------------|:------------|:-----------|:---------|
-| **NAT** | ✅（单向） | ✅ | ❌ | ❌ | 日常上网、安装软件 |
-| **桥接** | ✅ | ✅ | ✅ | ✅ | 需要被局域网其他设备访问 |
-| **Host-Only** | ✅ | ❌ | ❌ | ✅ | 搭建隔离的实验私网 |
-
-**2. 双网卡方案的优势：**
-
-> NAT 网卡保障了虚拟机可以访问互联网（下载软件、更新系统），Host-Only 网卡构建了宿主机与虚拟机之间稳定且隔离的内网环境。两者互补，既不影响上网功能，又保证了多机互联的可靠性。
-
-**3. 克隆技术的价值：**
-
-> 通过"模板机 + 完全克隆"的方式，可以将环境搭建时间从 O(n) 降为 O(1)——配置好一台模板机后，克隆几乎零成本复制整个环境，这是云计算和虚拟化技术的核心思想。
-
+<p><strong>1. 三种虚拟机网络模式对比：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">网络模式</th>
+<th style="text-align: left;">虚拟机↔宿主机</th>
+<th style="text-align: left;">虚拟机↔外网</th>
+<th style="text-align: left;">外网↔虚拟机</th>
+<th style="text-align: left;">虚拟机之间</th>
+<th style="text-align: left;">典型用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>NAT</strong></td>
+<td style="text-align: left;">✅（单向）</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">日常上网、安装软件</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>桥接</strong></td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">需要被局域网其他设备访问</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Host-Only</strong></td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">搭建隔离的实验私网</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. 双网卡方案的优势：</strong></p>
+<blockquote>
+<p>NAT 网卡保障了虚拟机可以访问互联网（下载软件、更新系统），Host-Only 网卡构建了宿主机与虚拟机之间稳定且隔离的内网环境。两者互补，既不影响上网功能，又保证了多机互联的可靠性。</p>
+</blockquote>
+<p><strong>3. 克隆技术的价值：</strong></p>
+<blockquote>
+<p>通过"模板机 + 完全克隆"的方式，可以将环境搭建时间从 O(n) 降为 O(1)——配置好一台模板机后，克隆几乎零成本复制整个环境，这是云计算和虚拟化技术的核心思想。</p>
+</blockquote>
 <h3 id="exp4-problems">4.6 出现问题</h3>
 
-> **[待补充]** 请记录实验中实际遇到的问题和解决方法。
-> - BIOS 是否开启了 VT-x/AMD-V 虚拟化？
-> - 双网卡配置后哪个网卡对应 enp0s3/enp0s8？
-> - 克隆后虚拟机网络不通？
-
-常见问题参考：
-
-| 问题现象 | 可能原因 | 解决方法 |
-|:---------|:---------|:---------|
-| 提示 "VT-x/AMD-V 未启用" | BIOS 中未开启硬件虚拟化 | 重启进入 BIOS 启用 Intel VT-x 或 AMD-V |
-| 虚拟机之间 ping 不通 | IP 不在同一 Host-Only 网段 | 检查所有虚拟机 IP 均在 192.168.56.0/24 |
-| 克隆后网络无法使用 | 保留了原网卡 MAC 地址导致冲突 | 在 VirtualBox 中为每台克隆机重新生成 MAC 地址 |
-| 虚拟机无法上网 | NAT 网卡配置错误 | 确认 enp0s3 配置为 `dhcp4: yes` |
-
+<blockquote>
+<p><strong>[待补充]</strong> 请记录实验中实际遇到的问题和解决方法。
+- BIOS 是否开启了 VT-x/AMD-V 虚拟化？
+- 双网卡配置后哪个网卡对应 enp0s3/enp0s8？
+- 克隆后虚拟机网络不通？</p>
+</blockquote>
+<p>常见问题参考：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">问题现象</th>
+<th style="text-align: left;">可能原因</th>
+<th style="text-align: left;">解决方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">提示 "VT-x/AMD-V 未启用"</td>
+<td style="text-align: left;">BIOS 中未开启硬件虚拟化</td>
+<td style="text-align: left;">重启进入 BIOS 启用 Intel VT-x 或 AMD-V</td>
+</tr>
+<tr>
+<td style="text-align: left;">虚拟机之间 ping 不通</td>
+<td style="text-align: left;">IP 不在同一 Host-Only 网段</td>
+<td style="text-align: left;">检查所有虚拟机 IP 均在 192.168.56.0/24</td>
+</tr>
+<tr>
+<td style="text-align: left;">克隆后网络无法使用</td>
+<td style="text-align: left;">保留了原网卡 MAC 地址导致冲突</td>
+<td style="text-align: left;">在 VirtualBox 中为每台克隆机重新生成 MAC 地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">虚拟机无法上网</td>
+<td style="text-align: left;">NAT 网卡配置错误</td>
+<td style="text-align: left;">确认 enp0s3 配置为 <code>dhcp4: yes</code></td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp4-reflection">4.7 心得体会</h3>
 
-> **[待补充]** 请结合课程思政要求与个人实际经历撰写心得体会。
-
-**写作提示**：
+<blockquote>
+<p><strong>[待补充]</strong> 请结合课程思政要求与个人实际经历撰写心得体会。</p>
+</blockquote>
+<p><strong>写作提示</strong>：
 - 虚拟化技术是现代云计算（阿里云、腾讯云、AWS）的基础——一台物理服务器可以运行成百上千台虚拟机。你对此有什么认识？
 - VirtualBox 是 Oracle 公司的开源产品。国内云厂商的虚拟化技术发展如何？
-- 从实验四开始，你拥有了一个"迷你数据中心"——4台可以互通的 Linux 服务器。这为后续实验（Linux配置、SSH管理、软件部署）奠定了基础，体现了怎样的工程方法论？
-
----
-
+- 从实验四开始，你拥有了一个"迷你数据中心"——4台可以互通的 Linux 服务器。这为后续实验（Linux配置、SSH管理、软件部署）奠定了基础，体现了怎样的工程方法论？</p>
+<hr />
 <!-- ================================================================== -->
 <!--                            实验五                                    -->
 <!-- ================================================================== -->
@@ -1225,57 +1756,70 @@ ping -c 3 node3
 
 <h3 id="exp5-purpose">5.1 实验目的</h3>
 
-本次实验旨在掌握 Linux 系统的基础命令行操作，理解并管理常用的**系统配置文件**（`/etc/passwd`、`/etc/group`、`/etc/profile` 等）和**用户配置文件**（`~/.bashrc`、`~/.profile` 等），掌握**环境变量**的查看、临时设置与永久设置方法，为后续的服务器管理和软件部署打下基础。
-
+<p>本次实验旨在掌握 Linux 系统的基础命令行操作，理解并管理常用的<strong>系统配置文件</strong>（<code>/etc/passwd</code>、<code>/etc/group</code>、<code>/etc/profile</code> 等）和<strong>用户配置文件</strong>（<code>~/.bashrc</code>、<code>~/.profile</code> 等），掌握<strong>环境变量</strong>的查看、临时设置与永久设置方法，为后续的服务器管理和软件部署打下基础。</p>
 <h3 id="exp5-env">5.2 实验环境</h3>
 
-| 项目 | 配置信息 |
-|:-----|:---------|
-| 操作系统 | Ubuntu Server 22.04 LTS（VirtualBox 虚拟机） |
-| 前置条件 | 已完成实验四，至少有一台运行中的 Ubuntu 虚拟机 |
-| 当前用户 | dev（sudo 权限） |
-| 网络 | Host-Only 网络（192.168.56.0/24） |
-
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">项目</th>
+<th style="text-align: left;">配置信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">操作系统</td>
+<td style="text-align: left;">Ubuntu Server 22.04 LTS（VirtualBox 虚拟机）</td>
+</tr>
+<tr>
+<td style="text-align: left;">前置条件</td>
+<td style="text-align: left;">已完成实验四，至少有一台运行中的 Ubuntu 虚拟机</td>
+</tr>
+<tr>
+<td style="text-align: left;">当前用户</td>
+<td style="text-align: left;">dev（sudo 权限）</td>
+</tr>
+<tr>
+<td style="text-align: left;">网络</td>
+<td style="text-align: left;">Host-Only 网络（192.168.56.0/24）</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp5-process">5.3 实验过程（图文并茂）</h3>
 
 <h4>第一部分：系统基础操作</h4>
 
 <h4>步骤一：登录与系统信息查看</h4>
 
-```bash
-whoami              # 查看当前用户
+<pre><code class="language-bash">whoami              # 查看当前用户
 uname -a            # 查看内核版本与架构
 lsb_release -a      # 查看 Ubuntu 发行版信息
 hostname            # 查看主机名
 pwd                 # 查看当前工作目录
-```
-
+</code></pre>
 <div class="placeholder-img">📷 [截图占位] 图6-1：系统信息查看命令输出</div>
 <div class="img-caption">图6-1：uname -a 和 lsb_release -a 输出结果</div>
 
 <h4>步骤二：文件与目录操作</h4>
 
-```bash
-ls -lh                          # 详细列表（人类可读的文件大小）
+<pre><code class="language-bash">ls -lh                          # 详细列表（人类可读的文件大小）
 cd ~                            # 切换到主目录
 mkdir test_dir                  # 创建目录
 touch test.txt                  # 创建空文件
 cp test.txt test_copy.txt       # 复制文件
 mv test.txt /tmp/               # 移动文件
 rm -f test.txt                  # 强制删除文件
-```
-
-> ⚠️ **警告**：`rm -rf` 命令会永久删除文件且不可恢复，使用时须格外小心！
-
+</code></pre>
+<blockquote>
+<p>⚠️ <strong>警告</strong>：<code>rm -rf</code> 命令会永久删除文件且不可恢复，使用时须格外小心！</p>
+</blockquote>
 <h4>步骤三：系统资源监控</h4>
 
-```bash
-free -h       # 查看内存使用
+<pre><code class="language-bash">free -h       # 查看内存使用
 df -h         # 查看磁盘使用
 top           # 实时查看进程和资源（按 q 退出）
 du -sh *      # 查看当前目录各子目录大小
-```
-
+</code></pre>
 <div class="placeholder-img">📷 [截图占位] 图6-2：free -h 和 df -h 命令输出</div>
 <div class="img-caption">图6-2：系统内存和磁盘使用情况</div>
 
@@ -1283,48 +1827,74 @@ du -sh *      # 查看当前目录各子目录大小
 
 <h4>步骤四：查看用户与组配置文件</h4>
 
-```bash
-cat /etc/passwd       # 查看所有用户账户信息
+<pre><code class="language-bash">cat /etc/passwd       # 查看所有用户账户信息
 sudo cat /etc/shadow  # 查看加密密码信息（仅root可读）
 cat /etc/group        # 查看所有用户组
 id                    # 查看当前用户的 UID 和 GID
-```
-
-`/etc/passwd` 文件格式：`用户名:密码占位符:UID:GID:用户描述:主目录:登录Shell`
-
+</code></pre>
+<p><code>/etc/passwd</code> 文件格式：<code>用户名:密码占位符:UID:GID:用户描述:主目录:登录Shell</code></p>
 <div class="placeholder-img">📷 [截图占位] 图6-3：/etc/passwd 文件内容</div>
 <div class="img-caption">图6-3：查看 /etc/passwd 用户信息</div>
 
 <h4>步骤五：用户管理操作</h4>
 
-```bash
-sudo adduser testuser            # 创建新用户
+<pre><code class="language-bash">sudo adduser testuser            # 创建新用户
 sudo passwd testuser             # 设置/修改用户密码
 sudo usermod -aG sudo testuser   # 将用户加入 sudo 组（赋予管理员权限）
 groups testuser                  # 查看用户所属的组
 su - testuser                    # 切换到 testuser 身份
 sudo deluser --remove-home testuser  # 删除用户及其主目录
-```
-
+</code></pre>
 <h4>步骤六：文件权限管理</h4>
 
-**权限数字对照表：**
-
-| 数字 | 权限 | 含义 | 二进制 |
-|:-----|:-----|:-----|:-------|
-| 7 | `rwx` | 读 + 写 + 执行 | 111 |
-| 6 | `rw-` | 读 + 写 | 110 |
-| 5 | `r-x` | 读 + 执行 | 101 |
-| 4 | `r--` | 只读 | 100 |
-| 0 | `---` | 无权限 | 000 |
-
-```bash
-chmod 755 script.sh              # rwxr-xr-x：所有者全权限，其他只读+执行
+<p><strong>权限数字对照表：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">数字</th>
+<th style="text-align: left;">权限</th>
+<th style="text-align: left;">含义</th>
+<th style="text-align: left;">二进制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;"><code>rwx</code></td>
+<td style="text-align: left;">读 + 写 + 执行</td>
+<td style="text-align: left;">111</td>
+</tr>
+<tr>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;"><code>rw-</code></td>
+<td style="text-align: left;">读 + 写</td>
+<td style="text-align: left;">110</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;"><code>r-x</code></td>
+<td style="text-align: left;">读 + 执行</td>
+<td style="text-align: left;">101</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"><code>r--</code></td>
+<td style="text-align: left;">只读</td>
+<td style="text-align: left;">100</td>
+</tr>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;"><code>---</code></td>
+<td style="text-align: left;">无权限</td>
+<td style="text-align: left;">000</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-bash">chmod 755 script.sh              # rwxr-xr-x：所有者全权限，其他只读+执行
 chmod u+x script.sh              # 为所有者增加执行权限
 chmod g-w file.txt               # 去掉组的写权限
 chown user:group file.txt        # 修改文件所有者和组
-```
-
+</code></pre>
 <div class="placeholder-img">📷 [截图占位] 图6-4：ls -l 查看文件权限</div>
 <div class="img-caption">图6-4：ls -l 输出中的权限位解读</div>
 
@@ -1332,141 +1902,252 @@ chown user:group file.txt        # 修改文件所有者和组
 
 <h4>步骤七：查看环境变量</h4>
 
-```bash
-env             # 查看所有环境变量
+<pre><code class="language-bash">env             # 查看所有环境变量
 echo $PATH      # 查看可执行文件搜索路径
 echo $HOME      # 查看当前用户主目录
 echo $USER      # 查看当前用户名
 echo $SHELL     # 查看当前使用的 Shell
-```
-
+</code></pre>
 <h4>步骤八：临时设置环境变量</h4>
 
-```bash
-export PATH=$PATH:/home/dev/mybin    # 临时追加 PATH
-export MY_VAR="Hello World"          # 创建临时变量
+<pre><code class="language-bash">export PATH=$PATH:/home/dev/mybin    # 临时追加 PATH
+export MY_VAR=&quot;Hello World&quot;          # 创建临时变量
 echo $MY_VAR                         # 验证变量存在
 unset MY_VAR                         # 删除变量
-```
-
-> ⚠️ 临时变量在终端关闭后即消失，如需永久保存需写入配置文件。
-
+</code></pre>
+<blockquote>
+<p>⚠️ 临时变量在终端关闭后即消失，如需永久保存需写入配置文件。</p>
+</blockquote>
 <h4>步骤九：永久设置环境变量——用户级</h4>
 
-**三种用户级配置文件的区别：**
-
-| 配置文件 | 加载时机 | 典型用途 |
-|:---------|:---------|:---------|
-| `~/.bashrc` | 每次打开新终端 | 别名(alias)、PATH 追加、自定义函数 |
-| `~/.profile` | 用户登录时（仅一次） | 登录时需要执行的环境设置 |
-| `~/.bash_profile` | 用户登录时（优先于 .profile） | 登录时需要执行的环境设置 |
-
-编辑 `~/.bashrc` 添加自定义环境变量和别名：
-
-```bash
-nano ~/.bashrc
+<p><strong>三种用户级配置文件的区别：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">配置文件</th>
+<th style="text-align: left;">加载时机</th>
+<th style="text-align: left;">典型用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>~/.bashrc</code></td>
+<td style="text-align: left;">每次打开新终端</td>
+<td style="text-align: left;">别名(alias)、PATH 追加、自定义函数</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>~/.profile</code></td>
+<td style="text-align: left;">用户登录时（仅一次）</td>
+<td style="text-align: left;">登录时需要执行的环境设置</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>~/.bash_profile</code></td>
+<td style="text-align: left;">用户登录时（优先于 .profile）</td>
+<td style="text-align: left;">登录时需要执行的环境设置</td>
+</tr>
+</tbody>
+</table>
+<p>编辑 <code>~/.bashrc</code> 添加自定义环境变量和别名：</p>
+<pre><code class="language-bash">nano ~/.bashrc
 # 在文件末尾添加：
 export PATH=$PATH:/home/dev/mybin
-export MY_CUSTOM_VAR="自定义变量值"
+export MY_CUSTOM_VAR=&quot;自定义变量值&quot;
 alias ll='ls -alF'
 alias gs='git status'
 
 source ~/.bashrc    # 使配置立即生效
-```
-
+</code></pre>
 <div class="placeholder-img">📷 [截图占位] 图6-5：编辑 ~/.bashrc 并 source 生效</div>
 <div class="img-caption">图6-5：配置 ~/.bashrc 环境变量</div>
 
 <h4>步骤十：永久设置环境变量——系统级</h4>
 
-**三种系统级配置方式的对比：**
-
-| 方法 | 配置文件 | 生效范围 | 生效方式 |
-|:-----|:---------|:---------|:---------|
-| 方法一 | `/etc/environment` | 所有用户 | 需重启系统 |
-| 方法二 | `/etc/profile` | 所有登录用户 | `source /etc/profile` |
-| 方法三（推荐） | `/etc/profile.d/*.sh` | 所有用户 | 模块化、易于管理 |
-
-推荐的方法三：
-
-```bash
-sudo nano /etc/profile.d/myenv.sh
+<p><strong>三种系统级配置方式的对比：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">方法</th>
+<th style="text-align: left;">配置文件</th>
+<th style="text-align: left;">生效范围</th>
+<th style="text-align: left;">生效方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">方法一</td>
+<td style="text-align: left;"><code>/etc/environment</code></td>
+<td style="text-align: left;">所有用户</td>
+<td style="text-align: left;">需重启系统</td>
+</tr>
+<tr>
+<td style="text-align: left;">方法二</td>
+<td style="text-align: left;"><code>/etc/profile</code></td>
+<td style="text-align: left;">所有登录用户</td>
+<td style="text-align: left;"><code>source /etc/profile</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">方法三（推荐）</td>
+<td style="text-align: left;"><code>/etc/profile.d/*.sh</code></td>
+<td style="text-align: left;">所有用户</td>
+<td style="text-align: left;">模块化、易于管理</td>
+</tr>
+</tbody>
+</table>
+<p>推荐的方法三：</p>
+<pre><code class="language-bash">sudo nano /etc/profile.d/myenv.sh
 # 添加内容：
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 export PATH=$PATH:$JAVA_HOME/bin
 
 source /etc/profile.d/myenv.sh    # 立即生效
-```
-
+</code></pre>
 <h3 id="exp5-result">5.4 实验结果</h3>
 
-| 测试项 | 验证命令 | 结果 |
-|:-------|:---------|:-----|
-| 文件操作 | `ls -lh`, `mkdir`, `touch`, `cp`, `mv`, `rm` | ✅ 掌握 |
-| 系统监控 | `free -h`, `df -h`, `top` | ✅ 掌握 |
-| 用户管理 | `adduser`, `usermod`, `deluser` | ✅ 掌握 |
-| 文件权限 | `chmod 755 file` | ✅ 掌握 |
-| 用户级环境变量 | `~/.bashrc` 配置 `PATH` 和别名 | ✅ 成功 |
-| 系统级环境变量 | `/etc/profile.d/myenv.sh` | ✅ 成功 |
-
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">测试项</th>
+<th style="text-align: left;">验证命令</th>
+<th style="text-align: left;">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">文件操作</td>
+<td style="text-align: left;"><code>ls -lh</code>, <code>mkdir</code>, <code>touch</code>, <code>cp</code>, <code>mv</code>, <code>rm</code></td>
+<td style="text-align: left;">✅ 掌握</td>
+</tr>
+<tr>
+<td style="text-align: left;">系统监控</td>
+<td style="text-align: left;"><code>free -h</code>, <code>df -h</code>, <code>top</code></td>
+<td style="text-align: left;">✅ 掌握</td>
+</tr>
+<tr>
+<td style="text-align: left;">用户管理</td>
+<td style="text-align: left;"><code>adduser</code>, <code>usermod</code>, <code>deluser</code></td>
+<td style="text-align: left;">✅ 掌握</td>
+</tr>
+<tr>
+<td style="text-align: left;">文件权限</td>
+<td style="text-align: left;"><code>chmod 755 file</code></td>
+<td style="text-align: left;">✅ 掌握</td>
+</tr>
+<tr>
+<td style="text-align: left;">用户级环境变量</td>
+<td style="text-align: left;"><code>~/.bashrc</code> 配置 <code>PATH</code> 和别名</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">系统级环境变量</td>
+<td style="text-align: left;"><code>/etc/profile.d/myenv.sh</code></td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp5-knowledge">5.5 知识总结</h3>
 
-**1. Linux 文件权限模型（UGO）：**
-
-```
-   -  rw-  r--  r--
+<p><strong>1. Linux 文件权限模型（UGO）：</strong></p>
+<pre><code>   -  rw-  r--  r--
    │  │    │    │
    │  │    │    └── Others（其他用户）   读权限
    │  │    └─────── Group（所属组）      读权限
    │  └──────────── Owner（所有者）      读写权限
    └─────────────── 文件类型（- 普通文件，d 目录）
-```
-
-**2. 环境变量配置最佳实践：**
-
-> - 个人开发工具 → `~/.bashrc`
-> - 项目级环境变量 → `.env` 文件
-> - 系统级全局变量 → `/etc/profile.d/*.sh`
-> - 避免直接修改 `/etc/environment`（需要重启，不易版本管理）
-
-**3. 核心命令速查：**
-
-| 类别 | 常用命令 |
-|:-----|:---------|
-| 目录导航 | `pwd`, `cd`, `ls` |
-| 文件操作 | `touch`, `mkdir`, `cp`, `mv`, `rm`, `cat`, `nano` |
-| 权限管理 | `chmod`, `chown`, `chgrp` |
-| 系统监控 | `free`, `df`, `top`, `du`, `ps` |
-| 用户管理 | `whoami`, `id`, `adduser`, `usermod`, `passwd`, `su` |
-| 环境变量 | `env`, `echo`, `export`, `source`, `unset` |
-
+</code></pre>
+<p><strong>2. 环境变量配置最佳实践：</strong></p>
+<blockquote>
+<ul>
+<li>个人开发工具 → <code>~/.bashrc</code></li>
+<li>项目级环境变量 → <code>.env</code> 文件</li>
+<li>系统级全局变量 → <code>/etc/profile.d/*.sh</code></li>
+<li>避免直接修改 <code>/etc/environment</code>（需要重启，不易版本管理）</li>
+</ul>
+</blockquote>
+<p><strong>3. 核心命令速查：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">类别</th>
+<th style="text-align: left;">常用命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">目录导航</td>
+<td style="text-align: left;"><code>pwd</code>, <code>cd</code>, <code>ls</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">文件操作</td>
+<td style="text-align: left;"><code>touch</code>, <code>mkdir</code>, <code>cp</code>, <code>mv</code>, <code>rm</code>, <code>cat</code>, <code>nano</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">权限管理</td>
+<td style="text-align: left;"><code>chmod</code>, <code>chown</code>, <code>chgrp</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">系统监控</td>
+<td style="text-align: left;"><code>free</code>, <code>df</code>, <code>top</code>, <code>du</code>, <code>ps</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">用户管理</td>
+<td style="text-align: left;"><code>whoami</code>, <code>id</code>, <code>adduser</code>, <code>usermod</code>, <code>passwd</code>, <code>su</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">环境变量</td>
+<td style="text-align: left;"><code>env</code>, <code>echo</code>, <code>export</code>, <code>source</code>, <code>unset</code></td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp5-problems">5.6 出现问题</h3>
 
-> **[待补充]** 请记录实验中实际遇到的问题和解决方法。
-> - 有没有遇到 `Permission denied` 的情况？
-> - 修改 `~/.bashrc` 后不生效？
-> - `sudo: command not found` 如何解决？
-
-常见问题参考：
-
-| 问题现象 | 可能原因 | 解决方法 |
-|:---------|:---------|:---------|
-| `Permission denied` | 权限不足 | 使用 `sudo` 提权 |
-| `~/.bashrc` 修改不生效 | 未执行 `source` 或重新登录 | 执行 `source ~/.bashrc` |
-| `sudo: command not found` | 用户不在 sudo 组 | 切换到可 sudo 的用户或用 root 添加 |
-| 修改 `/etc/environment` 不生效 | 需要重启 | 重启系统或注销重新登录 |
-
+<blockquote>
+<p><strong>[待补充]</strong> 请记录实验中实际遇到的问题和解决方法。
+- 有没有遇到 <code>Permission denied</code> 的情况？
+- 修改 <code>~/.bashrc</code> 后不生效？
+- <code>sudo: command not found</code> 如何解决？</p>
+</blockquote>
+<p>常见问题参考：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">问题现象</th>
+<th style="text-align: left;">可能原因</th>
+<th style="text-align: left;">解决方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Permission denied</code></td>
+<td style="text-align: left;">权限不足</td>
+<td style="text-align: left;">使用 <code>sudo</code> 提权</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>~/.bashrc</code> 修改不生效</td>
+<td style="text-align: left;">未执行 <code>source</code> 或重新登录</td>
+<td style="text-align: left;">执行 <code>source ~/.bashrc</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sudo: command not found</code></td>
+<td style="text-align: left;">用户不在 sudo 组</td>
+<td style="text-align: left;">切换到可 sudo 的用户或用 root 添加</td>
+</tr>
+<tr>
+<td style="text-align: left;">修改 <code>/etc/environment</code> 不生效</td>
+<td style="text-align: left;">需要重启</td>
+<td style="text-align: left;">重启系统或注销重新登录</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp5-reflection">5.7 心得体会</h3>
 
-> **[待补充]** 请结合课程思政要求与个人实际经历撰写心得体会。
-
-**写作提示**：
+<blockquote>
+<p><strong>[待补充]</strong> 请结合课程思政要求与个人实际经历撰写心得体会。</p>
+</blockquote>
+<p><strong>写作提示</strong>：
 - Linux 命令行让你从图形界面转向文本操控——"一切皆文件"的设计哲学你如何理解？
 - Linux 作为开源操作系统的代表，支撑了全球绝大部分服务器和云计算基础设施。中国近年来也在发展国产操作系统（如 deepin、统信 UOS、华为欧拉 openEuler），对此你有什么看法？【课程大纲-思政融合点4】
-- 本次实验中学习的文件权限管理（chmod 755 等）直接影响系统安全——技术责任感如何体现在日常运维中？
-
----
-
+- 本次实验中学习的文件权限管理（chmod 755 等）直接影响系统安全——技术责任感如何体现在日常运维中？</p>
+<hr />
 <!-- ================================================================== -->
 <!--                            实验六                                    -->
 <!-- ================================================================== -->
@@ -1475,93 +2156,110 @@ source /etc/profile.d/myenv.sh    # 立即生效
 
 <h3 id="exp6-purpose">6.1 实验目的</h3>
 
-本次实验旨在安装和配置 **OpenSSH** 服务，实现多台 Linux 虚拟机之间的**安全远程登录管理**。掌握 **SSH 密钥认证**（免密登录）的配置方法，理解公钥/私钥对的身份验证原理。同时掌握使用 **SCP** 和 **rsync** 进行跨机文件传输与同步的技能，为多机开发环境的协同管理打下基础。
-
+<p>本次实验旨在安装和配置 <strong>OpenSSH</strong> 服务，实现多台 Linux 虚拟机之间的<strong>安全远程登录管理</strong>。掌握 <strong>SSH 密钥认证</strong>（免密登录）的配置方法，理解公钥/私钥对的身份验证原理。同时掌握使用 <strong>SCP</strong> 和 <strong>rsync</strong> 进行跨机文件传输与同步的技能，为多机开发环境的协同管理打下基础。</p>
 <h3 id="exp6-env">6.2 实验环境</h3>
 
-| 项目 | 配置信息 |
-|:-----|:---------|
-| 操作系统 | Ubuntu Server 22.04 LTS × 多台 |
-| 网络 | Host-Only（192.168.56.0/24） |
-| SSH 认证 | Ed25519 密钥对 + 密码认证 |
-| 节点 | node1 (192.168.56.101)、node2 (192.168.56.102) |
-
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">项目</th>
+<th style="text-align: left;">配置信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">操作系统</td>
+<td style="text-align: left;">Ubuntu Server 22.04 LTS × 多台</td>
+</tr>
+<tr>
+<td style="text-align: left;">网络</td>
+<td style="text-align: left;">Host-Only（192.168.56.0/24）</td>
+</tr>
+<tr>
+<td style="text-align: left;">SSH 认证</td>
+<td style="text-align: left;">Ed25519 密钥对 + 密码认证</td>
+</tr>
+<tr>
+<td style="text-align: left;">节点</td>
+<td style="text-align: left;">node1 (192.168.56.101)、node2 (192.168.56.102)</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp6-process">6.3 实验过程（图文并茂）</h3>
 
 <h4>第一部分：SSH 服务安装与基础配置</h4>
 
 <h4>步骤一：检查并安装 SSH 服务</h4>
 
-```bash
-sudo systemctl status ssh            # 检查 SSH 服务状态
+<pre><code class="language-bash">sudo systemctl status ssh            # 检查 SSH 服务状态
 sudo apt install openssh-server -y   # 安装 OpenSSH 服务端
 sudo systemctl enable ssh            # 设置开机自启
 sudo systemctl start ssh             # 启动服务
-```
-
+</code></pre>
 <div class="placeholder-img">📷 [截图占位] 图7-1：SSH 服务状态 active (running)</div>
 <div class="img-caption">图7-1：systemctl status ssh 显示服务运行中</div>
 
 <h4>步骤二：配置 SSH 服务器安全选项</h4>
 
-```bash
-sudo nano /etc/ssh/sshd_config
-```
-
-关键安全配置：
-
-```bash
-# Port 22                      # 默认端口（生产环境建议改为非标准端口）
+<pre><code class="language-bash">sudo nano /etc/ssh/sshd_config
+</code></pre>
+<p>关键安全配置：</p>
+<pre><code class="language-bash"># Port 22                      # 默认端口（生产环境建议改为非标准端口）
 PermitRootLogin no              # 禁止 root 直接登录
 PubkeyAuthentication yes        # 允许公钥认证
 PasswordAuthentication yes      # 允许密码认证（密钥配置后可关闭）
-```
-
-```bash
-sudo systemctl restart ssh      # 重启服务使配置生效
-```
-
+</code></pre>
+<pre><code class="language-bash">sudo systemctl restart ssh      # 重启服务使配置生效
+</code></pre>
 <h4>第二部分：SSH 密钥认证（免密登录）</h4>
 
 <h4>步骤三：生成 SSH 密钥对（在 node1 上）</h4>
 
-```bash
-ssh-keygen -t ed25519 -C "你的邮箱@example.com"
+<pre><code class="language-bash">ssh-keygen -t ed25519 -C &quot;你的邮箱@example.com&quot;
 # 一路回车使用默认路径和空密码
-```
-
-生成后会在 `~/.ssh/` 目录下产生两个文件：
-
-| 文件 | 说明 | 安全要求 |
-|:-----|:-----|:---------|
-| `id_ed25519` | **私钥**（Private Key） | 绝不能泄露！权限 600 |
-| `id_ed25519.pub` | **公钥**（Public Key） | 可以分发给任何服务器 |
-
+</code></pre>
+<p>生成后会在 <code>~/.ssh/</code> 目录下产生两个文件：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">文件</th>
+<th style="text-align: left;">说明</th>
+<th style="text-align: left;">安全要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>id_ed25519</code></td>
+<td style="text-align: left;"><strong>私钥</strong>（Private Key）</td>
+<td style="text-align: left;">绝不能泄露！权限 600</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>id_ed25519.pub</code></td>
+<td style="text-align: left;"><strong>公钥</strong>（Public Key）</td>
+<td style="text-align: left;">可以分发给任何服务器</td>
+</tr>
+</tbody>
+</table>
 <div class="placeholder-img">📷 [截图占位] 图7-2：ssh-keygen 密钥生成过程</div>
 <div class="img-caption">图7-2：生成 Ed25519 密钥对</div>
 
 <h4>步骤四：将公钥复制到远程服务器</h4>
 
-```bash
-# 推荐方法：使用 ssh-copy-id 自动完成
+<pre><code class="language-bash"># 推荐方法：使用 ssh-copy-id 自动完成
 ssh-copy-id dev@192.168.56.102
 # 输入 node2 上 dev 用户的密码（最后一次输入密码）
-```
-
-命令自动完成以下操作：
-1. 将公钥追加到远程服务器的 `~/.ssh/authorized_keys`
-2. 自动设置正确的文件权限
-
+</code></pre>
+<p>命令自动完成以下操作：
+1. 将公钥追加到远程服务器的 <code>~/.ssh/authorized_keys</code>
+2. 自动设置正确的文件权限</p>
 <div class="placeholder-img">📷 [截图占位] 图7-3：ssh-copy-id 成功传输公钥</div>
 <div class="img-caption">图7-3：公钥已成功复制到 node2</div>
 
 <h4>步骤五：验证免密登录</h4>
 
-```bash
-ssh dev@192.168.56.102
+<pre><code class="language-bash">ssh dev@192.168.56.102
 # 应该直接登录成功，不再需要输入密码！
-```
-
+</code></pre>
 <div class="placeholder-img">📷 [截图占位] 图7-4：免密登录成功效果</div>
 <div class="img-caption">图7-4：从 node1 免密登录到 node2</div>
 
@@ -1569,8 +2267,7 @@ ssh dev@192.168.56.102
 
 <h4>步骤六：使用 SCP 传输文件</h4>
 
-```bash
-# 上传文件到远程
+<pre><code class="language-bash"># 上传文件到远程
 scp /home/dev/test.txt dev@192.168.56.102:/home/dev/
 
 # 上传整个目录（递归）
@@ -1581,15 +2278,13 @@ scp dev@192.168.56.102:/home/dev/log.txt ./
 
 # 从远程下载目录
 scp -r dev@192.168.56.102:/home/dev/backup/ ./
-```
-
+</code></pre>
 <div class="placeholder-img">📷 [截图占位] 图7-5：SCP 文件传输过程</div>
 <div class="img-caption">图7-5：使用 SCP 完成文件上传</div>
 
 <h4>步骤七：使用 rsync 增量同步</h4>
 
-```bash
-# 安装 rsync
+<pre><code class="language-bash"># 安装 rsync
 sudo apt install rsync -y
 
 # 本地目录同步
@@ -1606,38 +2301,93 @@ rsync -avz --delete -e ssh /home/dev/source/ dev@192.168.56.102:/home/dev/dest/
 
 # 排除特定文件
 rsync -avz --exclude='*.log' --exclude='node_modules/' -e ssh /home/dev/ dev@192.168.56.102:/home/dev/
-```
-
-**rsync 常用选项：**
-
-| 选项 | 含义 |
-|:-----|:-----|
-| `-a` | 归档模式（保留权限、时间戳、符号链接等） |
-| `-v` | 显示详细信息（verbose） |
-| `-z` | 传输时压缩数据 |
-| `--delete` | 删除目标端多余文件（实现完全镜像） |
-| `--exclude` | 排除指定文件或目录 |
-| `-e ssh` | 通过 SSH 加密传输 |
-
+</code></pre>
+<p><strong>rsync 常用选项：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">选项</th>
+<th style="text-align: left;">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>-a</code></td>
+<td style="text-align: left;">归档模式（保留权限、时间戳、符号链接等）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-v</code></td>
+<td style="text-align: left;">显示详细信息（verbose）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-z</code></td>
+<td style="text-align: left;">传输时压缩数据</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--delete</code></td>
+<td style="text-align: left;">删除目标端多余文件（实现完全镜像）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--exclude</code></td>
+<td style="text-align: left;">排除指定文件或目录</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-e ssh</code></td>
+<td style="text-align: left;">通过 SSH 加密传输</td>
+</tr>
+</tbody>
+</table>
 <div class="placeholder-img">📷 [截图占位] 图7-6：rsync 增量同步输出</div>
 <div class="img-caption">图7-6：rsync 同步过程及传输统计</div>
 
 <h3 id="exp6-result">6.4 实验结果</h3>
 
-| 测试项 | 源 | 目标 | 结果 |
-|:-------|:---|:-----|:-----|
-| SSH 密码登录 | node1 | node2 | ✅ 成功 |
-| SSH 密钥免密登录 | node1 | node2 | ✅ 成功 |
-| SCP 文件上传 | node1: test.txt | node2: /home/dev/ | ✅ 成功 |
-| SCP 目录下载 | node2: /backup/ | node1: ./ | ✅ 成功 |
-| rsync 增量同步 | node1: /project/ | node2: /project/ | ✅ 成功 |
-
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">测试项</th>
+<th style="text-align: left;">源</th>
+<th style="text-align: left;">目标</th>
+<th style="text-align: left;">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">SSH 密码登录</td>
+<td style="text-align: left;">node1</td>
+<td style="text-align: left;">node2</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">SSH 密钥免密登录</td>
+<td style="text-align: left;">node1</td>
+<td style="text-align: left;">node2</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">SCP 文件上传</td>
+<td style="text-align: left;">node1: test.txt</td>
+<td style="text-align: left;">node2: /home/dev/</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">SCP 目录下载</td>
+<td style="text-align: left;">node2: /backup/</td>
+<td style="text-align: left;">node1: ./</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">rsync 增量同步</td>
+<td style="text-align: left;">node1: /project/</td>
+<td style="text-align: left;">node2: /project/</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp6-knowledge">6.5 知识总结</h3>
 
-**1. SSH 密钥认证原理（非对称加密）：**
-
-```
-┌──────────────┐                              ┌──────────────┐
+<p><strong>1. SSH 密钥认证原理（非对称加密）：</strong></p>
+<pre><code>┌──────────────┐                              ┌──────────────┐
 │    node1     │                              │    node2     │
 │              │   ① ssh-keygen 生成密钥对     │              │
 │  id_ed25519  │   ② ssh-copy-id 发送公钥 →→→  │ authorized_  │
@@ -1647,60 +2397,141 @@ rsync -avz --exclude='*.log' --exclude='node_modules/' -e ssh /home/dev/ dev@192
 │              │   node1 用私钥解密 ←←←        │              │
 │              │   验证通过，登录成功           │              │
 └──────────────┘                              └──────────────┘
-```
-
-> 私钥永远不离开本地——这就是"免密"却"更安全"的本质。
-
-**2. SCP vs rsync 对比：**
-
-| 对比维度 | SCP | rsync |
-|:---------|:----|:------|
-| 传输方式 | 全量传输（每次都传完整文件） | 增量传输（只传变化部分） |
-| 适用场景 | 一次性文件传输 | 目录同步、定期备份、部署 |
-| 断点续传 | ❌ 不支持 | ✅ 支持 |
-| 文件过滤 | ❌ 不支持 | ✅ 支持 `--exclude`/`--include` |
-| 删除同步 | ❌ 不支持 | ✅ 支持 `--delete` |
-| 推荐场景 | 传几个小文件 | 大目录、频繁同步、自动化部署 |
-
-**3. 核心命令速查：**
-
-| 命令 | 作用 |
-|:-----|:-----|
-| `ssh user@host` | 远程登录 |
-| `ssh-keygen -t ed25519` | 生成密钥对 |
-| `ssh-copy-id user@host` | 将公钥复制到远程 |
-| `scp file user@host:path` | 上传文件 |
-| `scp user@host:path ./` | 下载文件 |
-| `rsync -avz src/ dst/` | 本地同步 |
-| `rsync -avz -e ssh src/ user@host:dst/` | 远程同步 |
-
+</code></pre>
+<blockquote>
+<p>私钥永远不离开本地——这就是"免密"却"更安全"的本质。</p>
+</blockquote>
+<p><strong>2. SCP vs rsync 对比：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">对比维度</th>
+<th style="text-align: left;">SCP</th>
+<th style="text-align: left;">rsync</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">传输方式</td>
+<td style="text-align: left;">全量传输（每次都传完整文件）</td>
+<td style="text-align: left;">增量传输（只传变化部分）</td>
+</tr>
+<tr>
+<td style="text-align: left;">适用场景</td>
+<td style="text-align: left;">一次性文件传输</td>
+<td style="text-align: left;">目录同步、定期备份、部署</td>
+</tr>
+<tr>
+<td style="text-align: left;">断点续传</td>
+<td style="text-align: left;">❌ 不支持</td>
+<td style="text-align: left;">✅ 支持</td>
+</tr>
+<tr>
+<td style="text-align: left;">文件过滤</td>
+<td style="text-align: left;">❌ 不支持</td>
+<td style="text-align: left;">✅ 支持 <code>--exclude</code>/<code>--include</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">删除同步</td>
+<td style="text-align: left;">❌ 不支持</td>
+<td style="text-align: left;">✅ 支持 <code>--delete</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">推荐场景</td>
+<td style="text-align: left;">传几个小文件</td>
+<td style="text-align: left;">大目录、频繁同步、自动化部署</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3. 核心命令速查：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">命令</th>
+<th style="text-align: left;">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>ssh user@host</code></td>
+<td style="text-align: left;">远程登录</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ssh-keygen -t ed25519</code></td>
+<td style="text-align: left;">生成密钥对</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ssh-copy-id user@host</code></td>
+<td style="text-align: left;">将公钥复制到远程</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>scp file user@host:path</code></td>
+<td style="text-align: left;">上传文件</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>scp user@host:path ./</code></td>
+<td style="text-align: left;">下载文件</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rsync -avz src/ dst/</code></td>
+<td style="text-align: left;">本地同步</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rsync -avz -e ssh src/ user@host:dst/</code></td>
+<td style="text-align: left;">远程同步</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp6-problems">6.6 出现问题</h3>
 
-> **[待补充]** 请记录实验中实际遇到的问题和解决方法。
-> - SSH 连接被拒绝（Connection refused）？
-> - 配置免密后仍需输入密码？
-> - rsync 提示远程未找到命令？
-
-常见问题参考：
-
-| 问题现象 | 可能原因 | 解决方法 |
-|:---------|:---------|:---------|
-| `ssh: connect to host port 22: Connection refused` | SSH 服务未运行 | `sudo systemctl start ssh` |
-| 配置密钥后仍需密码 | 文件权限不正确 | `chmod 700 ~/.ssh; chmod 600 ~/.ssh/authorized_keys` |
-| `Permission denied (publickey)` | 公钥未正确复制 | 重新执行 `ssh-copy-id`；检查 `authorized_keys` 内容 |
-| `rsync: command not found` (远程) | 远程服务器未安装 rsync | `sudo apt install rsync -y`（在远程执行） |
-
+<blockquote>
+<p><strong>[待补充]</strong> 请记录实验中实际遇到的问题和解决方法。
+- SSH 连接被拒绝（Connection refused）？
+- 配置免密后仍需输入密码？
+- rsync 提示远程未找到命令？</p>
+</blockquote>
+<p>常见问题参考：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">问题现象</th>
+<th style="text-align: left;">可能原因</th>
+<th style="text-align: left;">解决方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>ssh: connect to host port 22: Connection refused</code></td>
+<td style="text-align: left;">SSH 服务未运行</td>
+<td style="text-align: left;"><code>sudo systemctl start ssh</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">配置密钥后仍需密码</td>
+<td style="text-align: left;">文件权限不正确</td>
+<td style="text-align: left;"><code>chmod 700 ~/.ssh; chmod 600 ~/.ssh/authorized_keys</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Permission denied (publickey)</code></td>
+<td style="text-align: left;">公钥未正确复制</td>
+<td style="text-align: left;">重新执行 <code>ssh-copy-id</code>；检查 <code>authorized_keys</code> 内容</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rsync: command not found</code> (远程)</td>
+<td style="text-align: left;">远程服务器未安装 rsync</td>
+<td style="text-align: left;"><code>sudo apt install rsync -y</code>（在远程执行）</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp6-reflection">6.7 心得体会</h3>
 
-> **[待补充]** 请结合课程思政要求与个人实际经历撰写心得体会。
-
-**写作提示**：
+<blockquote>
+<p><strong>[待补充]</strong> 请结合课程思政要求与个人实际经历撰写心得体会。</p>
+</blockquote>
+<p><strong>写作提示</strong>：
 - SSH 密钥认证让你告别了每次都要输密码的繁琐——"免密"背后是非对称加密的数学原理，这让你对密码学有什么新的认识？
 - OpenSSH 是开源的，支撑着全球绝大多数服务器的安全管理。安全工具的开源对于国家安全和自主可控有什么意义？【课程大纲-思政融合点5】
-- rsync 的增量同步算法只传输文件变化的部分——这种"只做必要的工作"的工程思维对你有什么启发？在实际开发中如何应用这种思想？
-
----
-
+- rsync 的增量同步算法只传输文件变化的部分——这种"只做必要的工作"的工程思维对你有什么启发？在实际开发中如何应用这种思想？</p>
+<hr />
 <!-- ================================================================== -->
 <!--                            实验七                                    -->
 <!-- ================================================================== -->
@@ -1709,86 +2540,116 @@ rsync -avz --exclude='*.log' --exclude='node_modules/' -e ssh /home/dev/ dev@192
 
 <h3 id="exp7-purpose">7.1 实验目的</h3>
 
-本次实验旨在综合运用前七个实验所学的各类工具，构建和模拟一个完整的网络开发与部署环境。完整体验 Web 静态站点从**本地开发**到**云端自动部署**的全流程，掌握 **GitHub Actions 持续集成/持续部署（CI/CD）** 的基本概念与实践方法，同时学习使用 **Nginx** 在 Linux 服务器上部署静态站点。
-
+<p>本次实验旨在综合运用前七个实验所学的各类工具，构建和模拟一个完整的网络开发与部署环境。完整体验 Web 静态站点从<strong>本地开发</strong>到<strong>云端自动部署</strong>的全流程，掌握 <strong>GitHub Actions 持续集成/持续部署（CI/CD）</strong> 的基本概念与实践方法，同时学习使用 <strong>Nginx</strong> 在 Linux 服务器上部署静态站点。</p>
 <h3 id="exp7-env">7.2 实验环境</h3>
 
-| 项目 | 配置信息 |
-|:-----|:---------|
-| 本地开发 | Windows 11 + VS Code + Node.js + Hexo |
-| 版本控制 | Git + GitHub（源码仓库 + 部署仓库） |
-| CI/CD | GitHub Actions |
-| 部署平台 | GitHub Pages + 虚拟机 Nginx 服务器 |
-| 虚拟机 | Ubuntu Server 22.04 LTS（192.168.56.101） |
-| Web 服务器 | Nginx |
-
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">项目</th>
+<th style="text-align: left;">配置信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">本地开发</td>
+<td style="text-align: left;">Windows 11 + VS Code + Node.js + Hexo</td>
+</tr>
+<tr>
+<td style="text-align: left;">版本控制</td>
+<td style="text-align: left;">Git + GitHub（源码仓库 + 部署仓库）</td>
+</tr>
+<tr>
+<td style="text-align: left;">CI/CD</td>
+<td style="text-align: left;">GitHub Actions</td>
+</tr>
+<tr>
+<td style="text-align: left;">部署平台</td>
+<td style="text-align: left;">GitHub Pages + 虚拟机 Nginx 服务器</td>
+</tr>
+<tr>
+<td style="text-align: left;">虚拟机</td>
+<td style="text-align: left;">Ubuntu Server 22.04 LTS（192.168.56.101）</td>
+</tr>
+<tr>
+<td style="text-align: left;">Web 服务器</td>
+<td style="text-align: left;">Nginx</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp7-process">7.3 实验过程（图文并茂）</h3>
 
 <h4>第一部分：GitHub Actions 自动化部署（CI/CD）</h4>
 
 <h4>步骤一：准备工作</h4>
 
-确认本地 Hexo 博客和 Git 配置正常：
-
-```bash
-cd ~/my-blog
+<p>确认本地 Hexo 博客和 Git 配置正常：</p>
+<pre><code class="language-bash">cd ~/my-blog
 hexo server     # 验证博客能正常运行
 git config --global user.name
 git config --global user.email
-```
-
+</code></pre>
 <h4>步骤二：创建两个 GitHub 仓库</h4>
 
-| 仓库 | 名称 | 可见性 | 分支 | 用途 |
-|:-----|:-----|:-------|:-----|:-----|
-| 源码仓库 | `my-blog` | Private（推荐） | `main` | 存放 Hexo 源码 |
-| 部署仓库 | `[用户名].github.io` | Public | `main` | 托管静态页面供访问 |
-
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">仓库</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">可见性</th>
+<th style="text-align: left;">分支</th>
+<th style="text-align: left;">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">源码仓库</td>
+<td style="text-align: left;"><code>my-blog</code></td>
+<td style="text-align: left;">Private（推荐）</td>
+<td style="text-align: left;"><code>main</code></td>
+<td style="text-align: left;">存放 Hexo 源码</td>
+</tr>
+<tr>
+<td style="text-align: left;">部署仓库</td>
+<td style="text-align: left;"><code>[用户名].github.io</code></td>
+<td style="text-align: left;">Public</td>
+<td style="text-align: left;"><code>main</code></td>
+<td style="text-align: left;">托管静态页面供访问</td>
+</tr>
+</tbody>
+</table>
 <div class="placeholder-img">📷 [截图占位] 图8-1：GitHub 上两个仓库的概览</div>
 <div class="img-caption">图8-1：源码仓库和部署仓库</div>
 
 <h4>步骤三：将本地项目关联到源码仓库</h4>
 
-```bash
-cd ~/my-blog
+<pre><code class="language-bash">cd ~/my-blog
 git init
 git remote add origin https://github.com/你的用户名/my-blog.git
-```
-
-创建 `.gitignore` 文件：
-
-```
-node_modules/
+</code></pre>
+<p>创建 <code>.gitignore</code> 文件：</p>
+<pre><code>node_modules/
 .DS_Store
 public/
 .deploy_git/
-```
-
-提交并推送：
-
-```bash
-git add .
-git commit -m "初始化Hexo博客源码"
+</code></pre>
+<p>提交并推送：</p>
+<pre><code class="language-bash">git add .
+git commit -m &quot;初始化Hexo博客源码&quot;
 git branch -M main
 git push -u origin main
-```
-
+</code></pre>
 <div class="placeholder-img">📷 [截图占位] 图8-2：git push 首次推送源码成功</div>
 <div class="img-caption">图8-2：源码成功推送到 GitHub</div>
 
 <h4>步骤四：配置 GitHub Actions 工作流</h4>
 
-这是本实验的**核心步骤**——编写自动化部署配置文件：
-
-```bash
-mkdir -p .github/workflows
+<p>这是本实验的<strong>核心步骤</strong>——编写自动化部署配置文件：</p>
+<pre><code class="language-bash">mkdir -p .github/workflows
 nano .github/workflows/deploy.yml
-```
-
-编写工作流配置文件（⚠️ **请将"你的用户名"替换为实际 GitHub 用户名**）：
-
-```yaml
-name: Deploy to GitHub Pages
+</code></pre>
+<p>编写工作流配置文件（⚠️ <strong>请将"你的用户名"替换为实际 GitHub 用户名</strong>）：</p>
+<pre><code class="language-yaml">name: Deploy to GitHub Pages
 
 on:
   push:
@@ -1820,7 +2681,7 @@ jobs:
         run: npx hexo generate
 
       - name: 创建 .nojekyll 文件
-        run: echo "" > public/.nojekyll
+        run: echo &quot;&quot; &gt; public/.nojekyll
 
       - name: 部署到 GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -1829,42 +2690,37 @@ jobs:
           publish_dir: ./public
           publish_branch: main
           external_repository: 你的用户名/你的用户名.github.io
-```
-
-提交并推送工作流文件：
-
-```bash
-git add .github/workflows/deploy.yml
-git commit -m "添加 GitHub Actions 自动部署工作流"
+</code></pre>
+<p>提交并推送工作流文件：</p>
+<pre><code class="language-bash">git add .github/workflows/deploy.yml
+git commit -m &quot;添加 GitHub Actions 自动部署工作流&quot;
 git push
-```
-
+</code></pre>
 <div class="placeholder-img">📷 [截图占位] 图8-3：GitHub Actions 工作流运行界面</div>
 <div class="img-caption">图8-3：GitHub Actions 自动部署工作流执行成功</div>
 
 <h4>步骤五：配置 Personal Access Token（密钥）</h4>
 
-> 🔑 为了让 GitHub Actions 能够向你的部署仓库推送代码，需要配置一个有写入权限的 Token。
-
-操作流程：
-
-1. GitHub → Settings → Developer settings → **Personal access tokens → Tokens (classic)**
-2. **Generate new token (classic)**
-3. 勾选 **`repo`** 权限（完整仓库访问权限）
-4. 生成后**立即复制 Token**（仅显示一次！）
-5. 回到源码仓库 → Settings → **Secrets and variables → Actions** → New repository secret
-   - **Name**：`PERSONAL_TOKEN`
-   - **Secret**：粘贴刚才复制的 Token
-
+<blockquote>
+<p>🔑 为了让 GitHub Actions 能够向你的部署仓库推送代码，需要配置一个有写入权限的 Token。</p>
+</blockquote>
+<p>操作流程：</p>
+<ol>
+<li>GitHub → Settings → Developer settings → <strong>Personal access tokens → Tokens (classic)</strong></li>
+<li><strong>Generate new token (classic)</strong></li>
+<li>勾选 <strong><code>repo</code></strong> 权限（完整仓库访问权限）</li>
+<li>生成后<strong>立即复制 Token</strong>（仅显示一次！）</li>
+<li>回到源码仓库 → Settings → <strong>Secrets and variables → Actions</strong> → New repository secret</li>
+<li><strong>Name</strong>：<code>PERSONAL_TOKEN</code></li>
+<li><strong>Secret</strong>：粘贴刚才复制的 Token</li>
+</ol>
 <div class="placeholder-img">📷 [截图占位] 图8-4：GitHub Personal Access Token 生成界面</div>
 <div class="img-caption">图8-4：生成 Personal Access Token 并配置 repo 权限</div>
 
 <h4>步骤六：配置 GitHub Pages 并验证</h4>
 
-部署仓库 → Settings → Pages → Branch: `main` → Save。
-
-访问 **https://你的用户名.github.io** 确认博客上线。
-
+<p>部署仓库 → Settings → Pages → Branch: <code>main</code> → Save。</p>
+<p>访问 <strong>https://你的用户名.github.io</strong> 确认博客上线。</p>
 <div class="placeholder-img">📷 [截图占位] 图8-5：GitHub Pages 配置和站点访问</div>
 <div class="img-caption">图8-5：GitHub Pages 设置和线上博客最终效果</div>
 
@@ -1872,26 +2728,19 @@ git push
 
 <h4>步骤七：在虚拟机上安装和配置 Nginx</h4>
 
-```bash
-sudo apt update
+<pre><code class="language-bash">sudo apt update
 sudo apt install nginx -y
 sudo systemctl start nginx
 sudo systemctl enable nginx    # 开机自启
-```
-
-创建站点目录并配置 Nginx：
-
-```bash
-sudo mkdir -p /var/www/blog
+</code></pre>
+<p>创建站点目录并配置 Nginx：</p>
+<pre><code class="language-bash">sudo mkdir -p /var/www/blog
 sudo chown -R $USER:$USER /var/www/blog
 
 sudo nano /etc/nginx/sites-available/blog
-```
-
-Nginx 站点配置：
-
-```nginx
-server {
+</code></pre>
+<p>Nginx 站点配置：</p>
+<pre><code class="language-nginx">server {
     listen 80;
     server_name _;
     root /var/www/blog;
@@ -1901,51 +2750,69 @@ server {
         try_files $uri $uri/ =404;
     }
 }
-```
-
-启用站点：
-
-```bash
-sudo ln -s /etc/nginx/sites-available/blog /etc/nginx/sites-enabled/
+</code></pre>
+<p>启用站点：</p>
+<pre><code class="language-bash">sudo ln -s /etc/nginx/sites-available/blog /etc/nginx/sites-enabled/
 sudo rm /etc/nginx/sites-enabled/default    # 移除默认站点
 sudo nginx -t                                # 测试配置语法
 sudo systemctl reload nginx                  # 重载配置
-```
-
+</code></pre>
 <div class="placeholder-img">📷 [截图占位] 图8-6：Nginx 安装和配置过程</div>
 <div class="img-caption">图8-6：Nginx 配置测试和启动</div>
 
 <h4>步骤八：使用 rsync 部署到虚拟机</h4>
 
-在本地生成静态文件后，通过 rsync 一键同步到虚拟机：
-
-```bash
-cd ~/my-blog
+<p>在本地生成静态文件后，通过 rsync 一键同步到虚拟机：</p>
+<pre><code class="language-bash">cd ~/my-blog
 hexo generate
 
 # 通过 rsync 同步到虚拟机 Nginx 站点目录
 rsync -avz --delete -e ssh public/ dev@192.168.56.101:/var/www/blog/
-```
-
+</code></pre>
 <div class="placeholder-img">📷 [截图占位] 图8-7：rsync 部署到虚拟机 Nginx</div>
 <div class="img-caption">图8-7：通过 rsync 将静态文件部署到虚拟机 Nginx</div>
 
-访问虚拟机 IP（http://192.168.56.101）即可看到部署的博客。
-
+<p>访问虚拟机 IP（http://192.168.56.101）即可看到部署的博客。</p>
 <h3 id="exp7-result">7.4 实验结果</h3>
 
-| 测试项 | 验证方式 | 结果 |
-|:-------|:---------|:-----|
-| GitHub Actions 自动构建 | 推送代码后自动触发 | ✅ 成功 |
-| GitHub Pages 部署 | 访问 `https://[用户名].github.io` | ✅ 成功 |
-| Nginx 安装 | `systemctl status nginx` | ✅ 成功 |
-| Nginx 站点部署 | 访问 `http://192.168.56.101` | ✅ 成功 |
-| rsync 增量部署 | 修改文章后同步 | ✅ 成功 |
-
-**完整 CI/CD 流水线：**
-
-```
-┌───────────────────────┐
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">测试项</th>
+<th style="text-align: left;">验证方式</th>
+<th style="text-align: left;">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">GitHub Actions 自动构建</td>
+<td style="text-align: left;">推送代码后自动触发</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">GitHub Pages 部署</td>
+<td style="text-align: left;">访问 <code>https://[用户名].github.io</code></td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">Nginx 安装</td>
+<td style="text-align: left;"><code>systemctl status nginx</code></td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">Nginx 站点部署</td>
+<td style="text-align: left;">访问 <code>http://192.168.56.101</code></td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+<tr>
+<td style="text-align: left;">rsync 增量部署</td>
+<td style="text-align: left;">修改文章后同步</td>
+<td style="text-align: left;">✅ 成功</td>
+</tr>
+</tbody>
+</table>
+<p><strong>完整 CI/CD 流水线：</strong></p>
+<pre><code>┌───────────────────────┐
 │  本地开发（VS Code）   │
 │  hexo new → 写文章     │
 └─────────┬─────────────┘
@@ -1976,23 +2843,48 @@ rsync -avz --delete -e ssh public/ dev@192.168.56.101:/var/www/blog/
 │  虚拟机 Nginx (生产)  │
 │  http://192.168.56.101│
 └───────────────────────┘
-```
-
+</code></pre>
 <h3 id="exp7-knowledge">7.5 知识总结</h3>
 
-**1. CI/CD 核心概念：**
-
-| 概念 | 英文 | 含义 | 本实验实现 |
-|:-----|:-----|:-----|:-----------|
-| 持续集成 | Continuous Integration (CI) | 代码变更后自动构建和测试 | `git push` 后自动 `npm install` + `hexo generate` |
-| 持续部署 | Continuous Deployment (CD) | 构建通过后自动部署到生产 | 自动推送到 GitHub Pages |
-| 工作流 | Workflow | 定义自动化流程的 YAML 配置 | `.github/workflows/deploy.yml` |
-| 密钥管理 | Secrets | 安全存储敏感信息（Token等） | `PERSONAL_TOKEN` 存储在 GitHub Secrets |
-
-**2. GitHub Actions 工作流文件结构：**
-
-```yaml
-name: 工作流名称              # 在 Actions 页面显示的名称
+<p><strong>1. CI/CD 核心概念：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">概念</th>
+<th style="text-align: left;">英文</th>
+<th style="text-align: left;">含义</th>
+<th style="text-align: left;">本实验实现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">持续集成</td>
+<td style="text-align: left;">Continuous Integration (CI)</td>
+<td style="text-align: left;">代码变更后自动构建和测试</td>
+<td style="text-align: left;"><code>git push</code> 后自动 <code>npm install</code> + <code>hexo generate</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">持续部署</td>
+<td style="text-align: left;">Continuous Deployment (CD)</td>
+<td style="text-align: left;">构建通过后自动部署到生产</td>
+<td style="text-align: left;">自动推送到 GitHub Pages</td>
+</tr>
+<tr>
+<td style="text-align: left;">工作流</td>
+<td style="text-align: left;">Workflow</td>
+<td style="text-align: left;">定义自动化流程的 YAML 配置</td>
+<td style="text-align: left;"><code>.github/workflows/deploy.yml</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">密钥管理</td>
+<td style="text-align: left;">Secrets</td>
+<td style="text-align: left;">安全存储敏感信息（Token等）</td>
+<td style="text-align: left;"><code>PERSONAL_TOKEN</code> 存储在 GitHub Secrets</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. GitHub Actions 工作流文件结构：</strong></p>
+<pre><code class="language-yaml">name: 工作流名称              # 在 Actions 页面显示的名称
 on:                           # 触发条件
   push: { branches: [main] }  #   → 推送到 main 分支时触发
   workflow_dispatch:           #   → 也支持手动触发
@@ -2002,59 +2894,111 @@ jobs:                         # 任务定义
     steps:                    #   步骤列表
       - name: 步骤名
         uses: 使用的动作/run: 执行命令
-```
-
-**3. Nginx 核心概念：**
-
-| 目录/命令 | 作用 |
-|:----------|:-----|
-| `/etc/nginx/sites-available/` | 可用站点配置存放处 |
-| `/etc/nginx/sites-enabled/` | 已启用站点配置（符号链接） |
-| `nginx -t` | 测试配置文件语法 |
-| `systemctl reload nginx` | 热重载配置（不中断服务） |
-| `root` 指令 | 指定站点的文件根目录 |
-| `try_files` 指令 | URL 路由规则 |
-
+</code></pre>
+<p><strong>3. Nginx 核心概念：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">目录/命令</th>
+<th style="text-align: left;">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>/etc/nginx/sites-available/</code></td>
+<td style="text-align: left;">可用站点配置存放处</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>/etc/nginx/sites-enabled/</code></td>
+<td style="text-align: left;">已启用站点配置（符号链接）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nginx -t</code></td>
+<td style="text-align: left;">测试配置文件语法</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>systemctl reload nginx</code></td>
+<td style="text-align: left;">热重载配置（不中断服务）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>root</code> 指令</td>
+<td style="text-align: left;">指定站点的文件根目录</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>try_files</code> 指令</td>
+<td style="text-align: left;">URL 路由规则</td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp7-problems">7.6 出现问题</h3>
 
-> **[待补充]** 请记录实验中实际遇到的问题和解决方法。
-> - GitHub Actions 运行失败怎么查看日志？
-> - 部署后 GitHub Pages 显示 404？
-> - Nginx 配置测试不通过？
-
-常见问题参考：
-
-| 问题现象 | 可能原因 | 解决方法 |
-|:---------|:---------|:---------|
-| GitHub Actions 失败 | Token 权限不足 / YAML 语法错误 | 检查 Token 是否勾选 `repo`；检查 YAML 缩进 |
-| GitHub Pages 404 | 仓库命名不是 `用户名.github.io` | 重命名仓库 |
-| 部署后样式丢失（CSS 404） | `_config.yml` 中 `url` 配置错误 | 设置 `url: https://用户名.github.io`，`root: /` |
-| Nginx 返回默认页 | 未正确启用 blog 站点 | 检查符号链接；reload nginx |
-| `nginx -t` 报错 | 配置语法错误 | 检查分号、括号匹配 |
-| rsync 连接被拒绝 | SSH 服务未运行 | `sudo systemctl status ssh` |
-
+<blockquote>
+<p><strong>[待补充]</strong> 请记录实验中实际遇到的问题和解决方法。
+- GitHub Actions 运行失败怎么查看日志？
+- 部署后 GitHub Pages 显示 404？
+- Nginx 配置测试不通过？</p>
+</blockquote>
+<p>常见问题参考：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">问题现象</th>
+<th style="text-align: left;">可能原因</th>
+<th style="text-align: left;">解决方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">GitHub Actions 失败</td>
+<td style="text-align: left;">Token 权限不足 / YAML 语法错误</td>
+<td style="text-align: left;">检查 Token 是否勾选 <code>repo</code>；检查 YAML 缩进</td>
+</tr>
+<tr>
+<td style="text-align: left;">GitHub Pages 404</td>
+<td style="text-align: left;">仓库命名不是 <code>用户名.github.io</code></td>
+<td style="text-align: left;">重命名仓库</td>
+</tr>
+<tr>
+<td style="text-align: left;">部署后样式丢失（CSS 404）</td>
+<td style="text-align: left;"><code>_config.yml</code> 中 <code>url</code> 配置错误</td>
+<td style="text-align: left;">设置 <code>url: https://用户名.github.io</code>，<code>root: /</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Nginx 返回默认页</td>
+<td style="text-align: left;">未正确启用 blog 站点</td>
+<td style="text-align: left;">检查符号链接；reload nginx</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nginx -t</code> 报错</td>
+<td style="text-align: left;">配置语法错误</td>
+<td style="text-align: left;">检查分号、括号匹配</td>
+</tr>
+<tr>
+<td style="text-align: left;">rsync 连接被拒绝</td>
+<td style="text-align: left;">SSH 服务未运行</td>
+<td style="text-align: left;"><code>sudo systemctl status ssh</code></td>
+</tr>
+</tbody>
+</table>
 <h3 id="exp7-reflection">7.7 心得体会</h3>
 
-> **[待补充]** 请结合课程思政要求与个人实际经历撰写心得体会。
-
-**写作提示**：
+<blockquote>
+<p><strong>[待补充]</strong> 请结合课程思政要求与个人实际经历撰写心得体会。</p>
+</blockquote>
+<p><strong>写作提示</strong>：
 - 作为整门课程的收官实验，你将前七个实验的技能串联成了一条完整的 "开发→部署" 流水线。回顾整个课程的学习历程，你最大的成长是什么？
 - GitHub Actions 让任何人都能免费使用 CI/CD——微软（GitHub 的母公司）将企业级 DevOps 能力免费开放给全球开发者，这体现了怎样的行业趋势？国内 Git 平台（Gitee、Coding）的 CI/CD 能力如何？
 - Nginx 是俄罗斯开发者 Igor Sysoev 开源的高性能 Web 服务器，现在全球超过 30% 的网站使用 Nginx。这个由个人作品成长为行业标准的故事，对你有什么启发？【课程大纲-思政融合点4】
-- 从"写一行代码"到"全世界都能访问"，你经历了完整的软件工程工具链——谈谈你对"工匠精神"和"全栈思维"的理解。
-
----
-
+- 从"写一行代码"到"全世界都能访问"，你经历了完整的软件工程工具链——谈谈你对"工匠精神"和"全栈思维"的理解。</p>
+<hr />
 <!-- ================================================================== -->
 <!--                          课程总结                                   -->
 <!-- ================================================================== -->
 
 <h2 id="课程总结">📝 课程总结</h2>
 
-### 七个实验的技术全景图
-
-```
-┌──────────────────────────────────────────────────────────────────────┐
+<h3>七个实验的技术全景图</h3>
+<pre><code>┌──────────────────────────────────────────────────────────────────────┐
 │                     《软件开发工具实践》技能图谱                       │
 ├────────────┬────────────┬────────────┬────────────┬─────────────────┤
 │  实验一    │  实验二    │  实验三    │  实验四    │  实验五          │
@@ -2075,42 +3019,57 @@ jobs:                         # 任务定义
 │ SCP rsync  │ rsync         │                                │
 │ 文件同步   │ 自动化部署    │                                │
 └────────────┴────────────┴────────────┴────────────┴─────────────────┘
-```
-
-### 课程学习路径回顾
-
-本课程七个实验遵循 **"从单机到多机、从本地到云端、从手动到自动"** 的递进逻辑：
-
-| 阶段 | 实验 | 核心能力 | 递进关系 |
-|:-----|:-----|:---------|:---------|
-| **搭建阶段** | 实验一~三 | 搭建 Web 开发环境与构建站点 | 从环境安装到站点上线 |
-| **运维阶段** | 实验四~六 | Linux 系统管理与远程运维 | 从 Windows 延伸到 Linux |
-| **工程化阶段** | 实验七 | CI/CD 自动化部署 | 将所有技能串联成工具链 |
-
-### 个人总结
-
-> **[待补充]** 请从以下几个方面进行课程总结（建议 500-800 字）：
->
-> **1. 技能收获**：你在这门课中学到的最有价值的技能是什么？哪些工具已经开始在你日常开发中使用？
->
-> **2. 思维转变**：从只会写代码到理解"开发→构建→测试→部署"的完整工具链，你的工程思维有哪些变化？
->
-> **3. 开源认知**：本课程涉及的全部工具（VS Code、Git、Node.js、Hexo、VirtualBox、Ubuntu、OpenSSH、Nginx）都是开源的。开源生态对你有什么启发？【课程大纲-思政融合点4】
->
-> **4. 未来规划**：作为计算机专业学生，你将如何继续深化这些工具的使用？有哪几个工具你计划深入学习？
->
-> **5. 课程建议**：对课程内容、教学方式、实验安排等方面的建议或反馈。
-
----
-
+</code></pre>
+<h3>课程学习路径回顾</h3>
+<p>本课程七个实验遵循 <strong>"从单机到多机、从本地到云端、从手动到自动"</strong> 的递进逻辑：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">阶段</th>
+<th style="text-align: left;">实验</th>
+<th style="text-align: left;">核心能力</th>
+<th style="text-align: left;">递进关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>搭建阶段</strong></td>
+<td style="text-align: left;">实验一~三</td>
+<td style="text-align: left;">搭建 Web 开发环境与构建站点</td>
+<td style="text-align: left;">从环境安装到站点上线</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>运维阶段</strong></td>
+<td style="text-align: left;">实验四~六</td>
+<td style="text-align: left;">Linux 系统管理与远程运维</td>
+<td style="text-align: left;">从 Windows 延伸到 Linux</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>工程化阶段</strong></td>
+<td style="text-align: left;">实验七</td>
+<td style="text-align: left;">CI/CD 自动化部署</td>
+<td style="text-align: left;">将所有技能串联成工具链</td>
+</tr>
+</tbody>
+</table>
+<h3>个人总结</h3>
+<blockquote>
+<p><strong>[待补充]</strong> 请从以下几个方面进行课程总结（建议 500-800 字）：</p>
+<p><strong>1. 技能收获</strong>：你在这门课中学到的最有价值的技能是什么？哪些工具已经开始在你日常开发中使用？</p>
+<p><strong>2. 思维转变</strong>：从只会写代码到理解"开发→构建→测试→部署"的完整工具链，你的工程思维有哪些变化？</p>
+<p><strong>3. 开源认知</strong>：本课程涉及的全部工具（VS Code、Git、Node.js、Hexo、VirtualBox、Ubuntu、OpenSSH、Nginx）都是开源的。开源生态对你有什么启发？【课程大纲-思政融合点4】</p>
+<p><strong>4. 未来规划</strong>：作为计算机专业学生，你将如何继续深化这些工具的使用？有哪几个工具你计划深入学习？</p>
+<p><strong>5. 课程建议</strong>：对课程内容、教学方式、实验安排等方面的建议或反馈。</p>
+</blockquote>
+<hr />
 <div style="text-align:center;margin:60px 0 30px;color:#94a3b8;font-size:13px;">
 <hr style="margin-bottom:16px;">
 本报告使用 <strong>VS Code</strong> + <strong>Markdown Preview Enhanced</strong> 编写<br>
 由 <strong>Hexo</strong> / 静态站点生成器渲染部署<br>
 © 2026 [你的姓名] · 软件开发工具实践课程实验报告
 </div>
-
 </div>    <!-- end .main-content -->
+
 
 </body>
 </html>
