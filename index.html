@@ -2613,9 +2613,6 @@ git config --global user.email
 </tr>
 </tbody>
 </table>
-<div class="placeholder-img">📷 [截图占位] 图8-1：GitHub 上两个仓库的概览</div>
-<div class="img-caption">图8-1：源码仓库和部署仓库</div>
-
 <h4>步骤三：将本地项目关联到源码仓库</h4>
 
 <pre><code class="language-bash">cd ~/my-blog
@@ -2634,9 +2631,6 @@ git commit -m &quot;初始化Hexo博客源码&quot;
 git branch -M main
 git push -u origin main
 </code></pre>
-<div class="placeholder-img">📷 [截图占位] 图8-2：git push 首次推送源码成功</div>
-<div class="img-caption">图8-2：源码成功推送到 GitHub</div>
-
 <h4>步骤四：配置 GitHub Actions 工作流</h4>
 
 <p>这是本实验的<strong>核心步骤</strong>——编写自动化部署配置文件：</p>
@@ -2691,9 +2685,6 @@ jobs:
 git commit -m &quot;添加 GitHub Actions 自动部署工作流&quot;
 git push
 </code></pre>
-<div class="placeholder-img">📷 [截图占位] 图8-3：GitHub Actions 工作流运行界面</div>
-<div class="img-caption">图8-3：GitHub Actions 自动部署工作流执行成功</div>
-
 <h4>步骤五：配置 Personal Access Token（密钥）</h4>
 
 <blockquote>
@@ -2709,16 +2700,10 @@ git push
 <li><strong>Name</strong>：<code>PERSONAL_TOKEN</code></li>
 <li><strong>Secret</strong>：粘贴刚才复制的 Token</li>
 </ol>
-<div class="placeholder-img">📷 [截图占位] 图8-4：GitHub Personal Access Token 生成界面</div>
-<div class="img-caption">图8-4：生成 Personal Access Token 并配置 repo 权限</div>
-
 <h4>步骤六：配置 GitHub Pages 并验证</h4>
 
 <p>部署仓库 → Settings → Pages → Branch: <code>main</code> → Save。</p>
 <p>访问 <strong>https://你的用户名.github.io</strong> 确认博客上线。</p>
-<div class="placeholder-img">📷 [截图占位] 图8-5：GitHub Pages 配置和站点访问</div>
-<div class="img-caption">图8-5：GitHub Pages 设置和线上博客最终效果</div>
-
 <h4>第二部分：部署到云服务器（虚拟机 Nginx）</h4>
 
 <h4>步骤七：在虚拟机上安装和配置 Nginx</h4>
@@ -2752,9 +2737,6 @@ sudo rm /etc/nginx/sites-enabled/default    # 移除默认站点
 sudo nginx -t                                # 测试配置语法
 sudo systemctl reload nginx                  # 重载配置
 </code></pre>
-<div class="placeholder-img">📷 [截图占位] 图8-6：Nginx 安装和配置过程</div>
-<div class="img-caption">图8-6：Nginx 配置测试和启动</div>
-
 <h4>步骤八：使用 rsync 部署到虚拟机</h4>
 
 <p>在本地生成静态文件后，通过 rsync 一键同步到虚拟机：</p>
@@ -2764,9 +2746,6 @@ hexo generate
 # 通过 rsync 同步到虚拟机 Nginx 站点目录
 rsync -avz --delete -e ssh public/ dev@192.168.56.101:/var/www/blog/
 </code></pre>
-<div class="placeholder-img">📷 [截图占位] 图8-7：rsync 部署到虚拟机 Nginx</div>
-<div class="img-caption">图8-7：通过 rsync 将静态文件部署到虚拟机 Nginx</div>
-
 <p>访问虚拟机 IP（http://192.168.56.101）即可看到部署的博客。</p>
 <h3 id="exp7-result">7.4 实验结果</h3>
 
