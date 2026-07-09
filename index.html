@@ -1452,7 +1452,7 @@ hexo server      # 或 hexo s
 <h4>步骤一：下载与安装 VirtualBox</h4>
 
 <p>访问 VirtualBox 官网 <strong>https://www.virtualbox.org/</strong> 下载 Windows 版安装包，按向导完成安装，<strong>安装后建议重启电脑</strong>以确保虚拟网卡驱动正确加载。</p>
-<p><img src="图5.1.png" alt="图5-1：VirtualBox 安装完成界面"></p>
+<p><img src="图5-1.png" alt="图5-1：VirtualBox 安装完成界面"></p>
 <div class="img-caption">图5-1：VirtualBox 安装向导</div>
 
 <h4>步骤二：下载 Ubuntu Server ISO</h4>
@@ -1512,14 +1512,14 @@ hexo server      # 或 hexo s
 </tr>
 </tbody>
 </table>
-<p><img src="图5.2（1）.png" alt="图5-2：VirtualBox 双网卡配置（1）">
-<img src="图5.2 (2).png" alt="图5-2：VirtualBox 双网卡配置（2）"></p>
+<p><img src="图5-2a.png" alt="图5-2：VirtualBox 双网卡配置（1）">
+<img src="图5-2b.png" alt="图5-2：VirtualBox 双网卡配置（2）"></p>
 <div class="img-caption">图5-2：虚拟机网络设置——适配器1(NAT) + 适配器2(Host-Only)</div>
 
 <h4>步骤四：安装 Ubuntu Server</h4>
 
 <p>启动虚拟机，选择 ISO 镜像，按向导完成系统安装。关键步骤：在软件选择页面<strong>务必按空格键选中 "Install OpenSSH server"</strong>，以便后续远程登录管理。</p>
-<p><img src="图5.3.png" alt="图5-3：Ubuntu Server 安装——SSH 服务勾选"></p>
+<p><img src="图5-3.png" alt="图5-3：Ubuntu Server 安装——SSH 服务勾选"></p>
 <div class="img-caption">图5-3：安装过程中勾选 OpenSSH server</div>
 
 <h4>步骤五：配置静态IP（Netplan）</h4>
@@ -1545,9 +1545,9 @@ hexo server      # 或 hexo s
 <pre><code class="language-bash">sudo netplan apply
 ip addr show    # 确认IP已生效
 </code></pre>
-<p><img src="图5.4（1）.png" alt="图5-4：Netplan 配置（1）">
-<img src="图5.4（2）.png" alt="图5-4：Netplan 配置（2）">
-<img src="图5.4（3）.png" alt="图5-4：ip addr 验证（3）"></p>
+<p><img src="图5-4a.png" alt="图5-4：Netplan 配置（1）">
+<img src="图5-4b.png" alt="图5-4：Netplan 配置（2）">
+<img src="图5-4c.png" alt="图5-4：ip addr 验证（3）"></p>
 <div class="img-caption">图5-4：静态IP配置生效后的验证</div>
 
 <h4>步骤六：配置主机名与 hosts 解析</h4>
@@ -1567,8 +1567,8 @@ sudo nano /etc/hosts
 <blockquote>
 <p>⚠️ <strong>重要</strong>：必须选择"完全克隆"而非"链接克隆"，以确保每台虚拟机独立运行且可分别修改网络配置。</p>
 </blockquote>
-<p><img src="图5.5（1）.png" alt="图5-5：克隆虚拟机操作（1）">
-<img src="图5.5（2）.png" alt="图5-5：克隆虚拟机操作（2）"></p>
+<p><img src="图5-5a.png" alt="图5-5：克隆虚拟机操作（1）">
+<img src="图5-5b.png" alt="图5-5：克隆虚拟机操作（2）"></p>
 <div class="img-caption">图5-5：从模板机克隆出 node1/node2/node3</div>
 
 <h4>步骤八：修改克隆机的主机名和IP</h4>
@@ -1586,10 +1586,10 @@ ping -c 3 192.168.55.1  # 测试宿主机连接
 ping -c 3 node2         # 测试虚拟机之间连接
 ping -c 3 node3
 </code></pre>
-<p><img src="图5.6（1）.png" alt="图5-6：ping测试（1）">
-<img src="图5.6（2）.png" alt="图5-6：ping测试（2）">
-<img src="图5.6（3）.png" alt="图5-6：ping测试（3）">
-<img src="图5.6（4）.png" alt="图5-6：ping测试（4）"></p>
+<p><img src="图5-6a.png" alt="图5-6：ping测试（1）">
+<img src="图5-6b.png" alt="图5-6：ping测试（2）">
+<img src="图5-6c.png" alt="图5-6：ping测试（3）">
+<img src="图5-6d.png" alt="图5-6：ping测试（4）"></p>
 <div class="img-caption">图5-6：node1 ping node2/node3 全部成功</div>
 
 <h3 id="exp4-result">4.4 实验结果</h3>
