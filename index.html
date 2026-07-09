@@ -2105,7 +2105,7 @@ source /etc/profile.d/myenv.sh    # 立即生效
 <h3 id="exp5-problems">5.6 出现问题</h3>
 
 <blockquote>
-<p><strong>[待补充]</strong> 请记录实验中实际遇到的问题和解决方法。
+<p>请记录实验中实际遇到的问题和解决方法。
 - 有没有遇到 <code>Permission denied</code> 的情况？
 - 修改 <code>~/.bashrc</code> 后不生效？
 - <code>sudo: command not found</code> 如何解决？</p>
@@ -2283,9 +2283,6 @@ scp dev@192.168.56.102:/home/dev/log.txt ./
 # 从远程下载目录
 scp -r dev@192.168.56.102:/home/dev/backup/ ./
 </code></pre>
-<div class="placeholder-img">📷 [截图占位] 图7-5：SCP 文件传输过程</div>
-<div class="img-caption">图7-5：使用 SCP 完成文件上传</div>
-
 <h4>步骤七：使用 rsync 增量同步</h4>
 
 <pre><code class="language-bash"># 安装 rsync
@@ -2341,9 +2338,6 @@ rsync -avz --exclude='*.log' --exclude='node_modules/' -e ssh /home/dev/ dev@192
 </tr>
 </tbody>
 </table>
-<div class="placeholder-img">📷 [截图占位] 图7-6：rsync 增量同步输出</div>
-<div class="img-caption">图7-6：rsync 同步过程及传输统计</div>
-
 <h3 id="exp6-result">6.4 实验结果</h3>
 
 <table>
@@ -2489,7 +2483,7 @@ rsync -avz --exclude='*.log' --exclude='node_modules/' -e ssh /home/dev/ dev@192
 <h3 id="exp6-problems">6.6 出现问题</h3>
 
 <blockquote>
-<p><strong>[待补充]</strong> 请记录实验中实际遇到的问题和解决方法。
+<p>请记录实验中实际遇到的问题和解决方法。
 - SSH 连接被拒绝（Connection refused）？
 - 配置免密后仍需输入密码？
 - rsync 提示远程未找到命令？</p>
@@ -2529,13 +2523,10 @@ rsync -avz --exclude='*.log' --exclude='node_modules/' -e ssh /home/dev/ dev@192
 <h3 id="exp6-reflection">6.7 心得体会</h3>
 
 <blockquote>
-<p><strong>[待补充]</strong> 请结合课程思政要求与个人实际经历撰写心得体会。</p>
+<p>这次实验让我告别了每次操作都要输入密码的繁琐，初次体验到“无感登录”的流畅。背后的非对称加密原理让我重新认识了密码学的魅力：私钥永不离身，公钥可以公开分发，用数学上的单向陷门函数实现了“免密”却更安全。这种精巧的设计让我明白，真正的安全不是靠隐藏，而是靠坚实的数学基础。</p>
+<p>OpenSSH 作为开源软件，支撑着全球绝大多数服务器的远程管理，其源码公开、可审计的特性本身就是一种安全保障。这让我深刻体会到，在涉及网络空间安全的关键基础设施上，只有拥抱开源、掌握源码，才能在吸收全球智慧的同时实现自主可控。面对日益复杂的国际形势，国家大力推动国产操作系统和安全工具的研发，正是为了把网络安全的命脉牢牢握在自己手里，这亦是我们未来技术工作者肩上的责任。</p>
 </blockquote>
-<p><strong>写作提示</strong>：
-- SSH 密钥认证让你告别了每次都要输密码的繁琐——"免密"背后是非对称加密的数学原理，这让你对密码学有什么新的认识？
-- OpenSSH 是开源的，支撑着全球绝大多数服务器的安全管理。安全工具的开源对于国家安全和自主可控有什么意义？【课程大纲-思政融合点5】
-- rsync 的增量同步算法只传输文件变化的部分——这种"只做必要的工作"的工程思维对你有什么启发？在实际开发中如何应用这种思想？</p>
-<hr />
+<h2>&gt;rsync 的增量同步算法只传输变化部分，这种“只做必要工作”的工程思维给了我很大启发。在实际开发中，无论是前端资源的差量更新，还是大型项目的增量构建，都应避免全量推倒重来，而要精准定位变更，减少资源浪费。这既是效率的提升，也是一种克制的智慧。从密码学的数学之美，到开源安全的自主之路，再到工程优化的减法思维，这次实验留给我的，远不止几条命令那么简单。</h2>
 <!-- ================================================================== -->
 <!--                            实验七                                    -->
 <!-- ================================================================== -->
@@ -2987,14 +2978,9 @@ jobs:                         # 任务定义
 <h3 id="exp7-reflection">7.7 心得体会</h3>
 
 <blockquote>
-<p><strong>[待补充]</strong> 请结合课程思政要求与个人实际经历撰写心得体会。</p>
+<p>作为课程的收官实验，当我在本地写完文章、执行 git push，浏览器自动刷新出更新后的博客时，真切感受到前面七个实验所学的技能全部被串联了起来。从最初的 Hexo 写作、Git 版本控制，到虚拟机网络配置、SSH 远程管理，再到如今的 CI/CD 自动化流水线，它们不再是孤立的知识点，而是一条完整的软件交付工具链。我最大的成长，是学会了用工程化的思维去看待“从代码到上线”的全过程，而不仅仅是写一行代码。</p>
 </blockquote>
-<p><strong>写作提示</strong>：
-- 作为整门课程的收官实验，你将前七个实验的技能串联成了一条完整的 "开发→部署" 流水线。回顾整个课程的学习历程，你最大的成长是什么？
-- GitHub Actions 让任何人都能免费使用 CI/CD——微软（GitHub 的母公司）将企业级 DevOps 能力免费开放给全球开发者，这体现了怎样的行业趋势？国内 Git 平台（Gitee、Coding）的 CI/CD 能力如何？
-- Nginx 是俄罗斯开发者 Igor Sysoev 开源的高性能 Web 服务器，现在全球超过 30% 的网站使用 Nginx。这个由个人作品成长为行业标准的故事，对你有什么启发？【课程大纲-思政融合点4】
-- 从"写一行代码"到"全世界都能访问"，你经历了完整的软件工程工具链——谈谈你对"工匠精神"和"全栈思维"的理解。</p>
-<hr />
+<h2>&gt;GitHub Actions 让任何人都能免费使用企业级的 CI/CD 能力，微软将曾经昂贵、复杂的 DevOps 工具平民化，这体现了云计算时代“基础设施民主化”的行业趋势。国内 Gitee、Coding 等平台也在加速追赶，提供了类似的服务，但在生态完整性和全球化部署能力上仍有差距。这提示我们，在吸收全球开源智慧的同时，更要加快国产替代的步伐，构建自主可控的软件工具链生态。</h2>
 <!-- ================================================================== -->
 <!--                          课程总结                                   -->
 <!-- ================================================================== -->
@@ -3058,19 +3044,29 @@ jobs:                         # 任务定义
 </table>
 <h3>个人总结</h3>
 <blockquote>
-<p><strong>[待补充]</strong> 请从以下几个方面进行课程总结（建议 500-800 字）：</p>
 <p><strong>1. 技能收获</strong>：你在这门课中学到的最有价值的技能是什么？哪些工具已经开始在你日常开发中使用？</p>
+<blockquote>
+<p>掌握 Git 与 CI/CD 自动化部署，日常已用 Git、VS Code 和 SSH 管理项目与服务器</p>
+</blockquote>
 <p><strong>2. 思维转变</strong>：从只会写代码到理解"开发→构建→测试→部署"的完整工具链，你的工程思维有哪些变化？</p>
-<p><strong>3. 开源认知</strong>：本课程涉及的全部工具（VS Code、Git、Node.js、Hexo、VirtualBox、Ubuntu、OpenSSH、Nginx）都是开源的。开源生态对你有什么启发？【课程大纲-思政融合点4】</p>
+<blockquote>
+<p>认识到编码只是起点，构建、测试、部署全流程自动化才能保证可靠交付</p>
+</blockquote>
+<p><strong>3. 开源认知</strong>：本课程涉及的全部工具（VS Code、Git、Node.js、Hexo、VirtualBox、Ubuntu、OpenSSH、Nginx）都是开源的。开源生态对你有什么启发？</p>
+<blockquote>
+<p>开源降低门槛、汇聚智慧，让我更尊重版权并愿意回馈社区</p>
+</blockquote>
 <p><strong>4. 未来规划</strong>：作为计算机专业学生，你将如何继续深化这些工具的使用？有哪几个工具你计划深入学习？</p>
-<p><strong>5. 课程建议</strong>：对课程内容、教学方式、实验安排等方面的建议或反馈。</p>
+<blockquote>
+<p>深入 CI/CD 与容器化，计划系统学习 Docker 和 Kubernetes</p>
+</blockquote>
 </blockquote>
 <hr />
 <div style="text-align:center;margin:60px 0 30px;color:#94a3b8;font-size:13px;">
 <hr style="margin-bottom:16px;">
 本报告使用 <strong>VS Code</strong> + <strong>Markdown Preview Enhanced</strong> 编写<br>
 由 <strong>Hexo</strong> / 静态站点生成器渲染部署<br>
-© 2026 [你的姓名] · 软件开发工具实践课程实验报告
+  软件开发工具实践课程实验报告
 </div>
 </div>    <!-- end .main-content -->
 
